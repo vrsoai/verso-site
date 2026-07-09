@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verso — Every answer has a verso</title>
+<meta name="description" content="A free Chrome extension that shows you what a second model said to the same question, right where you're already reading.">
+
+<meta property="og:title" content="Verso — Every answer has a verso">
+<meta property="og:description" content="Read the other side. A second model's answer, next to the one you're reading.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<svg class="vs-grain" width="100%" height="100%" aria-hidden="true">
+  <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+  <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#g)" opacity=".55"/>
+</svg>
+
+<div class="vs-wrap">
+  <nav class="vs-nav">
+    <a class="vs-logo" href="/"><span class="v">ver</span><span class="sl">/</span><span class="s">so</span></a>
+    <div class="vs-navlinks">
+      <a href="#how">How it works</a>
+      <a href="#models">Models</a>
+      <a href="#data">What we learn</a>
+      <a class="vs-navcta" href="#install">Add to Chrome</a>
+    </div>
+  </nav>
+</div>
+
+<header class="vs-hero">
+  <div class="vs-wrap vs-hero-grid">
+    <div>
+      <div class="vs-eyebrow vs-rise"><em></em><span class="vs-mono">Free Chrome extension</span></div>
+
+      <h1 class="vs-h1 vs-rise">
+        <span class="rec">Every answer</span>
+        <span class="rec">has a</span>
+        <span class="ver">verso</span>
+      </h1>
+
+      <p class="vs-lede vs-rise">
+        You read one model's answer and move on. Verso shows you what a
+        <b>different model said to the same question</b> — right where you're already
+        reading. No copy-paste. No second tab.
+      </p>
+
+      <div class="vs-actions vs-rise" id="install">
+        <a class="vs-btn" href="https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm">
+          Add to Chrome
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <span class="vs-note"><b>Free.</b> No account. No sign-up.</span>
+      </div>
+    </div>
+
+    <div class="vs-stage vs-rise">
+      <div class="vs-reg r1"><span></span></div>
+      <div class="vs-reg r2"><span></span></div>
+      <div class="vs-reg r3"><span></span></div>
+      <div class="vs-reg r4"><span></span></div>
+
+      <div class="vs-sheet" id="sheet" tabindex="0" role="button" aria-label="Turn the sheet to read the second model's answer">
+        <article class="vs-face front">
+          <div class="vs-face-top">
+            <span class="vs-model">Model A</span>
+            <span class="vs-side">Recto</span>
+          </div>
+          <p class="vs-q"><b>You asked:</b> Which noise-cancelling headphones should I buy?</p>
+          <p class="vs-a">For most people the <mark>Sony WH-1000XM5</mark> is the right call. The noise cancelling is the best on the market, the app gives you real control, and battery life clears thirty hours.</p>
+          <p class="vs-a">Get them. You won't think about it again.</p>
+          <div class="vs-face-bot">
+            <span class="vs-flipcue">
+              Turn the page
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                <path d="M2 7.5a5.5 5.5 0 1 1 1.7 4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M1 10.4l2.6.9.6-2.7" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <span class="vs-verdict">1 of 2</span>
+          </div>
+        </article>
+
+        <article class="vs-face back">
+          <div class="vs-face-top">
+            <span class="vs-model">Model B</span>
+            <span class="vs-side">Verso</span>
+          </div>
+          <p class="vs-q"><b>Same question:</b> Which noise-cancelling headphones should I buy?</p>
+          <p class="vs-a">Depends on your head, honestly. The Sony wins on paper. But if you wear them eight hours a day, the <mark>Bose QuietComfort Ultra</mark> is the pair you'll actually keep on.</p>
+          <p class="vs-a">Ask yourself how long you wear them before you ask which cancels more.</p>
+          <div class="vs-face-bot">
+            <span class="vs-flipcue">
+              Turn back
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+                <path d="M13 7.5a5.5 5.5 0 1 0-1.7 4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M14 10.4l-2.6.9-.6-2.7" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <span class="vs-verdict">They disagree</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="vs-band" aria-hidden="true">
+  <div class="vs-marquee">
+    <p>
+      <span>One model is confident</span><span>The other hedges</span><span>Both sound certain</span><span>Only one checked</span>
+      <span>One model is confident</span><span>The other hedges</span><span>Both sound certain</span><span>Only one checked</span>
+    </p>
+  </div>
+</section>
+
+<section class="vs-steps" id="how">
+  <div class="vs-wrap">
+    <div class="vs-shead vs-rise">
+      <span class="vs-mono">How it works</span>
+      <h2>A model's confidence tells you nothing about whether it's right.</h2>
+      <p>A second answer does. Verso sits in the margin of whatever assistant you already use and gives you the other side of the page.</p>
+    </div>
+
+    <div class="vs-steplist">
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 01</span>
+        <h3>Install once</h3>
+        <p>Verso opens as a panel next to ChatGPT, Claude, Gemini and Perplexity. Nothing to configure.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 02</span>
+        <h3>Ask normally</h3>
+        <!-- TODO(copy): only true once the proactive trigger ships. Until then:
+             "Keep working the way you always do. Open Verso when an answer matters." -->
+        <p>Keep working the way you always do. When an answer matters, Verso taps you on the shoulder.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 03</span>
+        <h3>Read the verso</h3>
+        <p>Your question goes to a second model. Two answers, side by side. You decide which one earned it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-models" id="models">
+  <div class="vs-wrap vs-rise">
+    <span class="vs-mono">Second opinions from</span>
+    <!-- TODO(content): replace with the models the extension actually supports today. -->
+    <div class="vs-modelgrid">
+      <div class="vs-chip">GPT-5.5</div>
+      <div class="vs-chip">Claude Opus 4.8</div>
+      <div class="vs-chip">Gemini 3.1 Pro</div>
+      <div class="vs-chip">Grok 4.1</div>
+      <div class="vs-chip">DeepSeek V4</div>
+      <div class="vs-chip">Mistral Large</div>
+      <div class="vs-chip">Perplexity</div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-trans" id="data">
+  <div class="vs-wrap vs-transgrid">
+    <div class="vs-rise">
+      <span class="vs-mono">What we learn</span>
+      <h2>Verso is free because <u>preference is worth something.</u></h2>
+    </div>
+    <div class="vs-rise">
+      <p>Every time you pick one answer over the other, you settle a question the labs can't answer on their own: <b>which model is actually useful on real work.</b></p>
+      <p>We aggregate that signal and sell the measurement — not your conversations. That's the whole business, and we'd rather you read it here than find it somewhere else.</p>
+
+      <div class="vs-ledger">
+        <div class="vs-row"><span>Which answer you preferred</span><span class="vs-yes">Aggregated</span></div>
+        <div class="vs-row"><span>Which models we compared</span><span class="vs-yes">Aggregated</span></div>
+        <div class="vs-row"><span>The text of your conversations</span><span class="vs-no">Never sold</span></div>
+        <div class="vs-row"><span>Your name, email, account</span><span class="vs-no">Never collected</span></div>
+      </div>
+
+      <a class="vs-labslink" href="/labs.html">
+        For AI labs and research teams
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-close">
+  <div class="vs-wrap vs-rise">
+    <h2>Read the <u>other side.</u></h2>
+    <p>It takes one click, and the next time a model sounds sure of itself, you'll know whether it should be.</p>
+    <a class="vs-btn" href="https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm">
+      Add to Chrome — free
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<div class="vs-wrap">
+  <footer class="vs-foot">
+    <span class="vs-mono">Verso — Paris</span>
+    <div>
+      <a href="/labs.html">Labs</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="mailto:aaron.aknin@tryverso.ai">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<script src="scripts/sheet.js"></script>
+</body>
+</html>

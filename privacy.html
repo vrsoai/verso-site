@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verso — Privacy</title>
+<meta name="description" content="What Verso collects, what it never collects, and what it sells.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<svg class="vs-grain" width="100%" height="100%" aria-hidden="true">
+  <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+  <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#g)" opacity=".55"/>
+</svg>
+
+<div class="vs-wrap">
+  <nav class="vs-nav">
+    <a class="vs-logo" href="/"><span class="v">ver</span><span class="sl">/</span><span class="s">so</span></a>
+    <div class="vs-navlinks">
+      <a href="/">Extension</a>
+      <a href="/labs.html">Labs</a>
+      <a class="vs-navcta" href="mailto:aaron.aknin@tryverso.ai">Contact</a>
+    </div>
+  </nav>
+</div>
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Privacy</span>
+  <h1 class="vs-rise">The short version, <u>before the long one.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Verso is free because we sell an aggregated measure of which model people prefer.
+    We do not sell your conversations. This page says exactly what that means.
+  </p>
+
+  <!-- ============================================================
+       ⚠ THIS PAGE IS A SKELETON. It must be completed and reviewed
+       by counsel before the homepage's "What we learn" section goes
+       live. Publishing the transparency claim without a real policy
+       behind it is worse than saying nothing.
+
+       Under GDPR you need at minimum:
+       - identity of the controller and contact
+       - categories of data, purposes, and legal basis (consent, most likely)
+       - retention periods
+       - recipients / categories of recipients (the labs)
+       - how consent is withdrawn, and what happens then
+       - data subject rights and how to exercise them
+       - transfers outside the EEA, if any
+       Do not ship placeholder legalese.
+       ============================================================ -->
+
+  <section class="vs-block vs-rise">
+    <h2>What Verso collects</h2>
+    <ul>
+      <li><b>The prompts you choose to compare</b>, and the answers each model returned. <span class="todo">TODO: exact scope, when the panel is open vs. closed.</span></li>
+      <li><b>Which answer you kept.</b> The preference signal itself.</li>
+      <li><b>An anonymous identifier</b>, generated on your device, so we can tell one session from another.</li>
+    </ul>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What Verso never collects</h2>
+    <ul>
+      <li>Your name, your email address, an account. There isn't one.</li>
+      <li>Conversations you did not send to Verso.</li>
+      <li><span class="todo">TODO: state the browsing-history position explicitly. Users will look for it.</span></li>
+    </ul>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What leaves Verso</h2>
+    <p>
+      Aggregated preference signal and derived measurements. <span class="todo">TODO:
+      describe the anonymisation and aggregation step concretely enough that a
+      sceptical reader believes it. Name the safeguards, not the intention.</span>
+    </p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Withdrawing consent</h2>
+    <p><span class="todo">TODO: one link, one click, and say what happens to data already collected.</span></p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Contact</h2>
+    <p>Verso — Paris, France. <a href="mailto:aaron.aknin@tryverso.ai" style="color:var(--blue)">aaron.aknin@tryverso.ai</a></p>
+    <p><span class="todo">TODO: legal entity name, registered address, DPO or contact point.</span></p>
+  </section>
+
+</main>
+
+<div class="vs-wrap">
+  <footer class="vs-foot">
+    <span class="vs-mono">Verso — Paris</span>
+    <div>
+      <a href="/">Extension</a>
+      <a href="/labs.html">Labs</a>
+      <a href="mailto:aaron.aknin@tryverso.ai">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<script src="scripts/sheet.js"></script>
+</body>
+</html>
