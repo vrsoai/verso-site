@@ -245,10 +245,10 @@ footer.vs-foot a:first-child{margin-left:0}
 footer.vs-foot a:hover{color:var(--ink)}
 
 /* ---- inner pages (labs, privacy) --------------------------------- */
-.vs-page{padding:clamp(50px,8vh,90px) 0 var(--gap-section)}
+.vs-page{padding-top:clamp(50px,8vh,90px);padding-bottom:var(--gap-section)}
 .vs-page h1{
   font-family:var(--fd);font-weight:800;letter-spacing:-.04em;line-height:.98;
-  font-size:clamp(38px,5.4vw,74px);margin:16px 0 24px;max-width:18ch;
+  font-size:clamp(38px,5.4vw,74px);margin:16px 0 24px;
 }
 .vs-page h1 u{text-decoration:none;color:var(--blue)}
 .vs-page-lede{font-size:clamp(17px,1.3vw,20px);color:var(--ink-soft);max-width:52ch;margin:0 0 var(--gap-head)}
