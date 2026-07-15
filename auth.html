@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Verso</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/tokens.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    font-family: var(--fb);
+    color: var(--ink);
+  }
+  .vs-auth-card {
+    background: var(--sheet);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(20,21,26,.08);
+    padding: 40px 32px;
+    max-width: 360px;
+    width: 100%;
+    margin: 0 16px;
+    text-align: center;
+  }
+  .vs-auth-title {
+    font-family: var(--fb);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 8px;
+  }
+  .vs-auth-msg {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .vs-auth-msg--error {
+    color: #dc2626;
+  }
+  .vs-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--rule);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: vs-spin .6s linear infinite;
+    margin: 0 auto;
+  }
+  @keyframes vs-spin { to { transform: rotate(360deg); } }
+  .vs-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--fm);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .vs-btn:hover { opacity: .85; }
+  .vs-hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="vs-auth-card">
+  <h1 class="vs-auth-title">Sign in to Verso</h1>
+  <p id="msg" class="vs-auth-msg">Redirecting to Google...</p>
+  <div id="spinner" class="vs-spinner"></div>
+  <button id="retry" class="vs-btn vs-hidden" onclick="location.reload()">Try again</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function () {
+  var SUPABASE_URL = 'https://pnegsckjwdqiescywcna.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBuZWdzY2tqd2RxaWVzY3l3Y25hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwNDk2OTgsImV4cCI6MjA4NTYyNTY5OH0.pSx5MmWVn3FbLMe5ZFjo5hIJsVxUNIJrMRfhw3OX96s';
+
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { persistSession: false }
+  });
+
+  var params = new URLSearchParams(window.location.search);
+  var isExtension = params.get('extension') === 'true';
+
+  // Build callback URL preserving extension params
+  var callbackUrl = new URL('/auth/callback', window.location.origin);
+  if (isExtension) {
+    callbackUrl.searchParams.set('extension', 'true');
+    var instanceId = params.get('instance_id');
+    if (instanceId) callbackUrl.searchParams.set('instance_id', instanceId);
+    var extId = params.get('ext_id');
+    if (extId) callbackUrl.searchParams.set('ext_id', extId);
+  }
+
+  sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: callbackUrl.toString() }
+  }).then(function (result) {
+    if (result.error) {
+      console.error('Verso: OAuth error:', result.error);
+      document.getElementById('msg').textContent = result.error.message;
+      document.getElementById('msg').classList.add('vs-auth-msg--error');
+      document.getElementById('spinner').classList.add('vs-hidden');
+      document.getElementById('retry').classList.remove('vs-hidden');
+    }
+    // If no error, browser redirects to Google — spinner stays visible
+  }).catch(function (e) {
+    console.error('Verso: Auth init error:', e);
+    document.getElementById('msg').textContent = 'Something went wrong. Please try again.';
+    document.getElementById('msg').classList.add('vs-auth-msg--error');
+    document.getElementById('spinner').classList.add('vs-hidden');
+    document.getElementById('retry').classList.remove('vs-hidden');
+  });
+})();
+</script>
+</body>
+</html>
