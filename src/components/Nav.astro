@@ -1,0 +1,47 @@
+---
+export interface Props {
+  variant?: 'consumer' | 'data' | 'minimal';
+}
+
+const { variant = 'consumer' } = Astro.props;
+
+interface NavLink { href: string; label: string; }
+interface NavCta  { href: string; label: string; }
+
+const configs: Record<string, { links: NavLink[]; cta: NavCta }> = {
+  consumer: {
+    links: [
+      { href: '/#how', label: 'How it works' },
+      { href: '/#models', label: 'Models' },
+      { href: '/#data', label: 'What we learn' },
+    ],
+    cta: { href: '#install', label: 'Add to Chrome' },
+  },
+  data: {
+    links: [
+      { href: '/', label: 'Extension' },
+      { href: '/privacy', label: 'Privacy' },
+    ],
+    cta: { href: 'mailto:contact@tryverso.ai', label: 'Request a sample' },
+  },
+  minimal: {
+    links: [
+      { href: '/', label: 'Extension' },
+      { href: '/labs', label: 'Labs' },
+    ],
+    cta: { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+  },
+};
+
+const { links, cta } = configs[variant];
+---
+
+<div class="vs-wrap">
+  <nav class="vs-nav">
+    <a class="vs-logo" href="/"><span class="v">ver</span><span class="sl">/</span><span class="s">so</span></a>
+    <div class="vs-navlinks">
+      {links.map(l => <a href={l.href}>{l.label}</a>)}
+      <a class="vs-navcta" href={cta.href}>{cta.label}</a>
+    </div>
+  </nav>
+</div>

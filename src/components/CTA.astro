@@ -1,0 +1,25 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+  arrow?: 'diagonal' | 'right';
+}
+
+const { href, label, arrow = 'diagonal' } = Astro.props;
+---
+
+{arrow === 'diagonal' ? (
+  <a class="vs-btn" href={href}>
+    {label}
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+      <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+    </svg>
+  </a>
+) : (
+  <a class="vs-btn" href={href}>
+    {label}
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+      <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+    </svg>
+  </a>
+)}

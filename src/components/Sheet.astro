@@ -1,0 +1,78 @@
+---
+export interface SheetFace {
+  label: string;        // "Model A" / "Model B"
+  side: string;         // "Recto" / "Verso"
+  questionPrefix: string; // "You asked:" / "Same question:"
+  question: string;
+  answer: string;
+  answerMark: string;   // text to wrap in <mark>
+  closing: string;
+  flipCue: string;      // "Turn the page" / "Turn back"
+  verdict: string;      // "1 of 2" / "They disagree"
+}
+
+export interface Props {
+  front: SheetFace;
+  back: SheetFace;
+}
+
+const { front, back } = Astro.props;
+
+/**
+ * Replace the first occurrence of `mark` in `text` with a <mark> element.
+ * Returns the raw HTML string for use with set:html.
+ */
+function markText(text: string, mark: string): string {
+  if (!mark) return text;
+  return text.replace(mark, `<mark>${mark}</mark>`);
+}
+---
+
+<div class="vs-stage vs-rise">
+  <div class="vs-reg r1"><span></span></div>
+  <div class="vs-reg r2"><span></span></div>
+  <div class="vs-reg r3"><span></span></div>
+  <div class="vs-reg r4"><span></span></div>
+
+  <div class="vs-sheet" id="sheet" tabindex="0" role="button" aria-label="Turn the sheet to read the second model's answer">
+    <article class="vs-face front">
+      <div class="vs-face-top">
+        <span class="vs-model">{front.label}</span>
+        <span class="vs-side">{front.side}</span>
+      </div>
+      <p class="vs-q"><b>{front.questionPrefix}</b> {front.question}</p>
+      <p class="vs-a" set:html={markText(front.answer, front.answerMark)} />
+      <p class="vs-a">{front.closing}</p>
+      <div class="vs-face-bot">
+        <span class="vs-flipcue">
+          {front.flipCue}
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M2 7.5a5.5 5.5 0 1 1 1.7 4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M1 10.4l2.6.9.6-2.7" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="vs-verdict">{front.verdict}</span>
+      </div>
+    </article>
+
+    <article class="vs-face back">
+      <div class="vs-face-top">
+        <span class="vs-model">{back.label}</span>
+        <span class="vs-side">{back.side}</span>
+      </div>
+      <p class="vs-q"><b>{back.questionPrefix}</b> {back.question}</p>
+      <p class="vs-a" set:html={markText(back.answer, back.answerMark)} />
+      <p class="vs-a">{back.closing}</p>
+      <div class="vs-face-bot">
+        <span class="vs-flipcue">
+          {back.flipCue}
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M13 7.5a5.5 5.5 0 1 0-1.7 4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 10.4l-2.6.9-.6-2.7" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </span>
+        <span class="vs-verdict">{back.verdict}</span>
+      </div>
+    </article>
+  </div>
+</div>

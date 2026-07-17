@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Sheet from '../components/Sheet.astro';
+import Footer from '../components/Footer.astro';
+
+const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm';
+---
+
+<Layout
+  title="Verso — Every answer has a verso"
+  description="A free Chrome extension that shows you what a second model said to the same question, right where you're already reading."
+  ogTitle="Verso — Every answer has a verso"
+  ogDescription="Read the other side. A second model's answer, next to the one you're reading."
+  includeScrollReveal
+  includeSheet
+>
+
+<Nav variant="consumer" />
+
+<header class="vs-hero">
+  <div class="vs-wrap vs-hero-grid">
+    <div>
+      <div class="vs-eyebrow vs-rise"><em></em><span class="vs-mono">Free Chrome extension</span></div>
+
+      <h1 class="vs-h1 vs-rise">
+        <span class="rec">Every answer</span>
+        <span class="rec">has a</span>
+        <span class="ver">verso</span>
+      </h1>
+
+      <p class="vs-lede vs-rise">
+        You read one model's answer and move on. Verso shows you what a
+        <b>different model said to the same question</b>, right where you're already
+        reading. No copy-paste. No second tab.
+      </p>
+
+      <div class="vs-actions vs-rise" id="install">
+        <a class="vs-btn" href={chromeStoreUrl}>
+          Add to Chrome
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <span class="vs-note"><b>Free.</b> No account. No sign-up.</span>
+      </div>
+    </div>
+
+    <Sheet
+      front={{
+        label: 'Model A',
+        side: 'Recto',
+        questionPrefix: 'You asked:',
+        question: 'Which noise-cancelling headphones should I buy?',
+        answer: 'For most people the Sony WH-1000XM5 is the right call. The noise cancelling is the best on the market, the app gives you real control, and battery life clears thirty hours.',
+        answerMark: 'Sony WH-1000XM5',
+        closing: 'Get them. You won\'t think about it again.',
+        flipCue: 'Turn the page',
+        verdict: '1 of 2',
+      }}
+      back={{
+        label: 'Model B',
+        side: 'Verso',
+        questionPrefix: 'Same question:',
+        question: 'Which noise-cancelling headphones should I buy?',
+        answer: 'Depends on your head, honestly. The Sony wins on paper. But if you wear them eight hours a day, the Bose QuietComfort Ultra is the pair you\'ll actually keep on.',
+        answerMark: 'Bose QuietComfort Ultra',
+        closing: 'Ask yourself how long you wear them before you ask which cancels more.',
+        flipCue: 'Turn back',
+        verdict: 'They disagree',
+      }}
+    />
+  </div>
+</header>
+
+<section class="vs-band" aria-hidden="true">
+  <div class="vs-marquee">
+    <p>
+      <span>One model is confident</span><span>The other hedges</span><span>Both sound certain</span><span>Only one checked</span>
+      <span>One model is confident</span><span>The other hedges</span><span>Both sound certain</span><span>Only one checked</span>
+    </p>
+  </div>
+</section>
+
+<section class="vs-steps" id="how">
+  <div class="vs-wrap">
+    <div class="vs-shead vs-rise">
+      <span class="vs-mono">How it works</span>
+      <h2>A model's confidence tells you nothing about whether it's right.</h2>
+      <p>A second answer does. Verso sits in the margin of whatever assistant you already use and gives you the other side of the page.</p>
+    </div>
+
+    <div class="vs-steplist">
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 01</span>
+        <h3>Install once</h3>
+        <p>Verso opens as a panel next to ChatGPT, Claude, Gemini and Perplexity. Nothing to configure.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 02</span>
+        <h3>Ask normally</h3>
+        <!-- TODO(copy): only true once the proactive trigger ships. Until then:
+             "Keep working the way you always do. Open Verso when an answer matters." -->
+        <p>Keep working the way you always do. When an answer matters, Verso taps you on the shoulder.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 03</span>
+        <h3>Read the verso</h3>
+        <p>Your question goes to a second model. Two answers, side by side. You decide which one earned it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-models" id="models">
+  <div class="vs-wrap vs-rise">
+    <span class="vs-mono">Second opinions from</span>
+    <!-- TODO(content): replace with the models the extension actually supports today. -->
+    <div class="vs-modelgrid">
+      <div class="vs-chip">GPT-5.5</div>
+      <div class="vs-chip">Claude Opus 4.8</div>
+      <div class="vs-chip">Gemini 3.1 Pro</div>
+      <div class="vs-chip">Grok 4.1</div>
+      <div class="vs-chip">DeepSeek V4</div>
+      <div class="vs-chip">Mistral Large</div>
+      <div class="vs-chip">Perplexity</div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-trans" id="data">
+  <div class="vs-wrap vs-transgrid">
+    <div class="vs-rise">
+      <span class="vs-mono">What we learn</span>
+      <h2>Verso is free because <u>preference is worth something.</u></h2>
+    </div>
+    <div class="vs-rise">
+      <p>Every time you pick one answer over the other, you settle a question the labs can't answer on their own: <b>which model is actually useful on real work.</b></p>
+      <p>We aggregate that signal and sell the measurement — not your conversations. That's the whole business, and we'd rather you read it here than find it somewhere else.</p>
+
+      <div class="vs-ledger">
+        <div class="vs-row"><span>Which answer you preferred</span><span class="vs-yes">Aggregated</span></div>
+        <div class="vs-row"><span>Which models we compared</span><span class="vs-yes">Aggregated</span></div>
+        <div class="vs-row"><span>The text of your conversations</span><span class="vs-no">Never sold</span></div>
+        <div class="vs-row"><span>Your name, email, account</span><span class="vs-no">Never collected</span></div>
+      </div>
+
+      <a class="vs-labslink" href="/labs">
+        For AI labs and research teams
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-close">
+  <div class="vs-wrap vs-rise">
+    <h2>Read the <u>other side.</u></h2>
+    <p>It takes one click, and the next time a model sounds sure of itself, you'll know whether it should be.</p>
+    <a class="vs-btn" href={chromeStoreUrl}>
+      Add to Chrome — free
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<Footer links={[
+  { href: '/labs', label: 'Labs' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

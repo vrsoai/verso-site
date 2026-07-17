@@ -1,0 +1,24 @@
+---
+export interface FooterLink { href: string; label: string; }
+
+export interface Props {
+  links?: FooterLink[];
+}
+
+const defaultLinks: FooterLink[] = [
+  { href: '/labs', label: 'Labs' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+];
+
+const { links = defaultLinks } = Astro.props;
+---
+
+<div class="vs-wrap">
+  <footer class="vs-foot">
+    <span class="vs-mono">Verso — San Francisco</span>
+    <div>
+      {links.map(l => <a href={l.href}>{l.label}</a>)}
+    </div>
+  </footer>
+</div>

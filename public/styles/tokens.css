@@ -1,0 +1,39 @@
+/* ============================================================
+   Verso — design tokens
+   SINGLE SOURCE OF TRUTH. Never hardcode a colour or a font
+   anywhere else in the codebase. If a value is missing here,
+   add it here first, then use it.
+   See DESIGN.md for the reasoning behind each choice.
+   ============================================================ */
+
+:root{
+  /* --- ink & paper -------------------------------------------------
+     The palette is a risograph two-pass print. Blue and pink are the
+     two ink drums. Overlap is what you get where they print on top of
+     each other — it is a *derived* colour, never used decoratively. */
+  --paper:#E4E5DF;        /* cool newsprint grey — NOT cream */
+  --paper-deep:#D6D8D0;   /* second paper tone, bands only */
+  --ink:#14151A;          /* near-black, the key plate */
+  --ink-soft:#5A5C63;     /* body copy at rest */
+  --sheet:#F2F2EE;        /* the sheet itself — brighter stock than the page */
+  --blue:#2540D4;         /* ink drum 1 — model A / recto */
+  --pink:#F0428C;         /* ink drum 2 — model B / verso */
+  --overlap:#5B2FA0;      /* blue x pink. Reserved: focus, verdicts. */
+  --rule:rgba(20,21,26,.16);
+
+  /* --- type --------------------------------------------------------
+     fd = display   (Bricolage Grotesque, 800, very tight tracking)
+     fb = body      (Instrument Sans)
+     fm = utility   (Space Mono — eyebrows, labels, data, buttons)     */
+  --fd:"Bricolage Grotesque","Helvetica Neue",sans-serif;
+  --fb:"Instrument Sans",system-ui,sans-serif;
+  --fm:"Space Mono",ui-monospace,monospace;
+
+  /* --- layout ------------------------------------------------------ */
+  --pad:clamp(20px,5vw,80px);
+  --measure:1240px;
+
+  /* --- section rhythm ---------------------------------------------- */
+  --gap-section:clamp(70px,10vh,120px);
+  --gap-head:clamp(40px,6vh,72px);
+}

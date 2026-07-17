@@ -1,0 +1,9 @@
+<!--
+  Print grain overlay — fixed SVG noise texture over the entire viewport.
+  If low-end mobile janks on scroll, replace with a tiled PNG. Do not delete.
+-->
+<svg class="vs-grain" width="100%" height="100%" aria-hidden="true">
+  <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+  <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#g)" opacity=".55"/>
+</svg>

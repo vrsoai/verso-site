@@ -1,0 +1,286 @@
+/* ============================================================
+   Verso — main stylesheet
+   Every colour and face comes from styles/tokens.css.
+   Class prefix `vs-` throughout to avoid specificity collisions.
+   ============================================================ */
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:80px}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--fb);
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ---- print grain ------------------------------------------------
+   If this causes scroll jank on low-end mobile, swap for a tiled
+   PNG background. Do not simply delete it — the grain is the paper. */
+.vs-grain{
+  position:fixed; inset:0; z-index:100; pointer-events:none;
+  opacity:.40; mix-blend-mode:multiply;
+}
+
+/* ---- registration marks (print artefact, not decoration) --------- */
+.vs-reg{position:absolute;width:26px;height:26px;pointer-events:none;opacity:.5}
+.vs-reg::before,.vs-reg::after{content:"";position:absolute;background:var(--ink)}
+.vs-reg::before{left:12px;top:0;width:1px;height:26px}
+.vs-reg::after{top:12px;left:0;height:1px;width:26px}
+.vs-reg span{position:absolute;inset:6px;border:1px solid var(--ink);border-radius:50%}
+
+/* ---- shell ------------------------------------------------------- */
+.vs-wrap{max-width:var(--measure);margin:0 auto;padding:0 var(--pad)}
+
+.vs-mono{
+  font-family:var(--fm);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+/* ---- nav --------------------------------------------------------- */
+.vs-nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+.vs-logo{
+  font-family:var(--fd);font-weight:800;font-size:22px;
+  letter-spacing:-.03em;text-decoration:none;color:var(--ink);
+  display:flex;align-items:baseline;
+}
+.vs-logo .sl{margin:0 .5px}
+.vs-navlinks{display:flex;gap:30px;align-items:center}
+.vs-navlinks a{color:var(--ink-soft);text-decoration:none;font-size:14px}
+.vs-navlinks a:hover{color:var(--ink)}
+@media(max-width:700px){.vs-navlinks a:not(.vs-navcta){display:none}}
+
+.vs-navcta{
+  font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1.5px solid var(--ink);padding:9px 16px;color:var(--ink)!important;
+  background:transparent;transition:background .18s,color .18s;
+}
+.vs-navcta:hover{background:var(--ink);color:var(--paper)!important}
+
+/* ---- hero -------------------------------------------------------- */
+.vs-hero{position:relative;padding:clamp(40px,7vh,80px) 0 var(--gap-section)}
+.vs-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,80px);align-items:center}
+@media(max-width:960px){.vs-hero-grid{grid-template-columns:1fr;gap:56px}}
+
+.vs-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.vs-eyebrow em{width:34px;height:1.5px;background:var(--pink);display:block;font-style:normal}
+
+h1.vs-h1{
+  font-family:var(--fd);font-weight:800;
+  font-size:clamp(50px,7.4vw,104px);
+  line-height:.90;letter-spacing:-.045em;
+  margin:0 0 30px;
+}
+.vs-h1 .rec{display:block}
+.vs-h1 .ver{display:block;color:var(--blue);position:relative}
+
+/* THE MISREGISTRATION. Two ink drums drifting apart, snapping into
+   alignment once every 7s. This is the identity. Do not remove. */
+.vs-h1 .ver::after{
+  content:"verso";position:absolute;left:0;top:0;
+  color:var(--pink);mix-blend-mode:multiply;
+  transform:translate(4px,3px);
+  animation:vs-mis 7s ease-in-out infinite;
+}
+@keyframes vs-mis{
+  0%,72%,100%{transform:translate(4px,3px)}
+  80%,92%{transform:translate(0,0)}
+}
+
+.vs-lede{font-size:clamp(17px,1.35vw,20px);color:var(--ink-soft);max-width:44ch;margin:0 0 36px}
+.vs-lede b{color:var(--ink);font-weight:600}
+
+.vs-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.vs-btn{
+  font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);text-decoration:none;
+  padding:17px 26px;display:inline-flex;align-items:center;gap:12px;
+  box-shadow:5px 5px 0 var(--pink);
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+.vs-btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--blue)}
+.vs-btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--blue)}
+.vs-note{font-size:13px;color:var(--ink-soft)}
+.vs-note b{color:var(--ink);font-weight:500}
+
+/* ---- the sheet (signature element) ------------------------------- */
+.vs-stage{position:relative;perspective:1900px;padding:26px}
+.vs-stage .vs-reg{opacity:.35}
+.vs-stage .r1{top:0;left:0}
+.vs-stage .r2{top:0;right:0}
+.vs-stage .r3{bottom:0;left:0}
+.vs-stage .r4{bottom:0;right:0}
+
+.vs-sheet{
+  position:relative;width:100%;aspect-ratio:1/1.13;
+  transform-style:preserve-3d;
+  transition:transform .95s cubic-bezier(.62,.03,.24,1);
+  cursor:pointer;
+}
+.vs-sheet.flip{transform:rotateY(180deg)}
+
+.vs-face{
+  position:absolute;inset:0;backface-visibility:hidden;
+  background:var(--sheet);border:1.5px solid var(--ink);
+  padding:clamp(20px,2.4vw,32px);
+  display:flex;flex-direction:column;
+}
+.vs-face.back{transform:rotateY(180deg)}
+
+.vs-face-top{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:13px;border-bottom:1px solid var(--rule);margin-bottom:20px;
+}
+.vs-model{font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.front .vs-model{color:var(--blue)}
+.back .vs-model{color:var(--pink)}
+.vs-side{font-family:var(--fm);font-size:10px;letter-spacing:.2em;color:var(--ink-soft)}
+
+.vs-q{font-size:14px;color:var(--ink-soft);margin:0 0 20px}
+.vs-q b{color:var(--ink);font-weight:500}
+
+.vs-a{font-size:clamp(15px,1.15vw,17px);line-height:1.62;margin:0}
+.vs-a + .vs-a{margin-top:13px}
+.vs-a mark{background:transparent;font-weight:600;box-shadow:inset 0 -.42em 0 rgba(240,66,140,.28)}
+.back .vs-a mark{box-shadow:inset 0 -.42em 0 rgba(37,64,212,.22)}
+
+.vs-face-bot{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}
+.vs-flipcue{
+  font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:9px;color:var(--ink);
+}
+.vs-flipcue svg{transition:transform .3s}
+.vs-sheet:hover .vs-flipcue svg{transform:rotate(180deg)}
+.vs-verdict{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--overlap)}
+
+/* ---- disagreement band ------------------------------------------- */
+.vs-band{border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);background:var(--paper-deep);overflow:hidden}
+.vs-marquee{display:flex;gap:0;width:max-content;animation:vs-scroll 44s linear infinite}
+@keyframes vs-scroll{to{transform:translateX(-50%)}}
+.vs-marquee p{
+  font-family:var(--fd);font-weight:700;font-size:clamp(20px,2.3vw,30px);
+  letter-spacing:-.02em;margin:0;padding:20px 0;white-space:nowrap;
+  display:flex;align-items:center;gap:34px;
+}
+.vs-marquee p span{padding-right:34px;display:flex;align-items:center;gap:34px}
+.vs-marquee p span::after{content:"";width:9px;height:9px;background:var(--pink);border-radius:50%;display:block}
+.vs-marquee p span:nth-child(even)::after{background:var(--blue)}
+
+/* ---- section heads ----------------------------------------------- */
+.vs-steps{padding:var(--gap-section) 0}
+.vs-shead{max-width:52ch;margin-bottom:var(--gap-head)}
+.vs-shead h2{
+  font-family:var(--fd);font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(32px,3.9vw,54px);margin:16px 0 18px;
+}
+.vs-shead p{color:var(--ink-soft);margin:0;font-size:clamp(16px,1.2vw,18px)}
+
+/* ---- steps -------------------------------------------------------
+   Numbered because install -> ask -> read IS a sequence. If a future
+   section is not a sequence, do not number it. */
+.vs-steplist{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+@media(max-width:860px){.vs-steplist{grid-template-columns:1fr}}
+.vs-step{padding:34px 30px;border-right:1px solid var(--rule);position:relative}
+.vs-step:first-child{padding-left:0}
+.vs-step:last-child{border-right:none;padding-right:0}
+@media(max-width:860px){
+  .vs-step{border-right:none;border-bottom:1px solid var(--rule);padding:34px 0}
+  .vs-step:last-child{border-bottom:none}
+}
+.vs-step h3{font-family:var(--fd);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:16px 0 10px}
+.vs-step p{margin:0;color:var(--ink-soft);font-size:15.5px;max-width:34ch}
+.vs-stepnum{font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--pink)}
+.vs-step:nth-child(2) .vs-stepnum{color:var(--overlap)}
+.vs-step:nth-child(3) .vs-stepnum{color:var(--blue)}
+
+/* ---- models ------------------------------------------------------ */
+.vs-models{padding:0 0 var(--gap-section)}
+.vs-modelgrid{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.vs-chip{
+  font-family:var(--fm);font-size:12px;letter-spacing:.06em;
+  border:1px solid var(--ink);padding:9px 15px;
+  transition:background .16s,color .16s;
+}
+.vs-chip:hover{background:var(--ink);color:var(--paper)}
+
+/* ---- transparency / inverted plate ------------------------------- */
+.vs-trans{border-top:1.5px solid var(--ink);background:var(--ink);color:var(--paper);padding:var(--gap-section) 0}
+.vs-trans .vs-mono{color:rgba(228,229,223,.55)}
+.vs-transgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+@media(max-width:860px){.vs-transgrid{grid-template-columns:1fr;gap:40px}}
+.vs-trans h2{
+  font-family:var(--fd);font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(32px,3.9vw,52px);margin:16px 0 0;
+}
+.vs-trans h2 u{text-decoration:none;color:var(--pink)}
+.vs-trans p{color:rgba(228,229,223,.72);margin:0 0 20px;font-size:clamp(16px,1.2vw,18px);max-width:46ch}
+.vs-trans p b{color:var(--paper);font-weight:600}
+.vs-ledger{border-top:1px solid rgba(228,229,223,.2);margin-top:30px}
+.vs-row{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid rgba(228,229,223,.2);font-size:15px}
+.vs-row span:first-child{color:rgba(228,229,223,.66)}
+.vs-yes{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
+.vs-no{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(228,229,223,.42)}
+.vs-labslink{display:inline-flex;align-items:center;gap:10px;color:var(--paper);text-decoration:none;font-family:var(--fm);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1.5px solid var(--pink);padding-bottom:5px;margin-top:34px}
+.vs-labslink:hover{gap:16px}
+
+/* ---- close ------------------------------------------------------- */
+.vs-close{padding:clamp(80px,13vh,150px) 0;text-align:center;position:relative}
+.vs-close h2{
+  font-family:var(--fd);font-weight:800;letter-spacing:-.045em;line-height:.94;
+  font-size:clamp(40px,6.4vw,88px);margin:0 0 22px;
+}
+.vs-close h2 u{text-decoration:none;color:var(--blue)}
+.vs-close p{color:var(--ink-soft);margin:0 auto 40px;max-width:40ch}
+
+footer.vs-foot{border-top:1px solid var(--rule);padding:30px 0 44px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer.vs-foot a{color:var(--ink-soft);text-decoration:none;font-size:13px;margin-left:22px}
+footer.vs-foot a:first-child{margin-left:0}
+footer.vs-foot a:hover{color:var(--ink)}
+
+/* ---- inner pages (labs, privacy) --------------------------------- */
+.vs-page{padding-top:clamp(50px,8vh,90px);padding-bottom:var(--gap-section)}
+.vs-page h1{
+  font-family:var(--fd);font-weight:800;letter-spacing:-.04em;line-height:.98;
+  font-size:clamp(38px,5.4vw,74px);margin:16px 0 24px;
+}
+.vs-page h1 u{text-decoration:none;color:var(--blue)}
+.vs-page-lede{font-size:clamp(17px,1.3vw,20px);color:var(--ink-soft);max-width:52ch;margin:0 0 var(--gap-head)}
+.vs-page h2{
+  font-family:var(--fd);font-weight:700;letter-spacing:-.025em;
+  font-size:clamp(24px,2.4vw,32px);margin:0 0 18px;
+}
+.vs-page h3{font-family:var(--fd);font-weight:700;font-size:19px;letter-spacing:-.015em;margin:0 0 8px}
+.vs-page p{color:var(--ink-soft);max-width:62ch}
+.vs-page p b, .vs-page li b{color:var(--ink);font-weight:600}
+.vs-page li{color:var(--ink-soft);max-width:62ch;margin-bottom:10px}
+.vs-block{padding-top:clamp(40px,6vh,64px);margin-top:clamp(40px,6vh,64px);border-top:1px solid var(--rule)}
+.vs-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px)}
+@media(max-width:860px){.vs-two{grid-template-columns:1fr;gap:32px}}
+
+.vs-table{width:100%;border-collapse:collapse;margin-top:22px;font-size:15px}
+.vs-table th{
+  font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);text-align:left;font-weight:400;
+  padding:0 14px 12px 0;border-bottom:1.5px solid var(--ink);
+}
+.vs-table td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+.vs-table td:first-child{color:var(--ink);font-weight:500}
+.vs-table .todo{font-family:var(--fm);font-size:11px;color:var(--overlap);letter-spacing:.08em}
+
+/* ---- a11y + motion ----------------------------------------------- */
+a:focus-visible,.vs-sheet:focus-visible{outline:2.5px solid var(--overlap);outline-offset:4px}
+.vs-rise{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.vs-rise.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .vs-rise{opacity:1;transform:none}
+  .vs-marquee{animation:none}
+}

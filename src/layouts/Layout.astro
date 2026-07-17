@@ -1,0 +1,100 @@
+---
+import Grain from '../components/Grain.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  noindex?: boolean;
+  includeScrollReveal?: boolean;
+  includeSheet?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  noindex = false,
+  includeScrollReveal = false,
+  includeSheet = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+
+  {noindex && <meta name="robots" content="noindex">}
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+
+  {ogTitle && <meta property="og:title" content={ogTitle}>}
+  {ogDescription && <meta property="og:description" content={ogDescription}>}
+  {(ogTitle || ogDescription) && <meta property="og:type" content="website">}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/tokens.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+<Grain />
+
+<slot />
+
+{includeSheet && (
+  <script is:inline>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var sheet = document.getElementById('sheet');
+      if (sheet) {
+        var turn = function () { sheet.classList.toggle('flip'); };
+        sheet.addEventListener('click', turn);
+        sheet.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); turn(); }
+        });
+        if (!reduce) {
+          setTimeout(function () { sheet.classList.add('flip'); }, 2600);
+          setTimeout(function () { sheet.classList.remove('flip'); }, 6200);
+        }
+      }
+    })();
+  </script>
+)}
+
+{includeScrollReveal && (
+  <script is:inline>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var targets = document.querySelectorAll('.vs-rise');
+      if (!targets.length) return;
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (!entry.isIntersecting) return;
+          setTimeout(function () { entry.target.classList.add('in'); }, i * 90);
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      targets.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+)}
+
+</body>
+</html>
