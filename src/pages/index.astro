@@ -42,7 +42,7 @@ const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcni
             <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
           </svg>
         </a>
-        <span class="vs-note"><b>Free.</b> No account. No sign-up.</span>
+        <span class="vs-note"><b>Free.</b> Works on ChatGPT, Claude, Gemini, Perplexity.</span>
       </div>
     </div>
 
@@ -131,22 +131,24 @@ const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcni
 <section class="vs-trans" id="data">
   <div class="vs-wrap vs-transgrid">
     <div class="vs-rise">
-      <span class="vs-mono">What we learn</span>
+      <span class="vs-mono">The deal</span>
       <h2>Verso is free because <u>preference is worth something.</u></h2>
     </div>
     <div class="vs-rise">
-      <p>Every time you pick one answer over the other, you settle a question the labs can't answer on their own: <b>which model is actually useful on real work.</b></p>
-      <p>We aggregate that signal and sell the measurement — not your conversations. That's the whole business, and we'd rather you read it here than find it somewhere else.</p>
+      <p>Every time you pick one answer over the other, you settle a question no benchmark can: <b>which model is actually useful on real work.</b></p>
+      <p>We collect your prompts, both answers, and your preference. We measure the signal — which model wins, on what kind of question, and what gets recommended by name. We sell the measurement. Not the conversations. That's the exchange, and we'd rather you read it here than find it somewhere else.</p>
 
       <div class="vs-ledger">
-        <div class="vs-row"><span>Which answer you preferred</span><span class="vs-yes">Aggregated</span></div>
-        <div class="vs-row"><span>Which models we compared</span><span class="vs-yes">Aggregated</span></div>
-        <div class="vs-row"><span>The text of your conversations</span><span class="vs-no">Never sold</span></div>
-        <div class="vs-row"><span>Your name, email, account</span><span class="vs-no">Never collected</span></div>
+        <div class="vs-row"><span>Which answer you preferred</span><span class="vs-yes">Aggregated &amp; sold</span></div>
+        <div class="vs-row"><span>Which models were compared</span><span class="vs-yes">Aggregated &amp; sold</span></div>
+        <div class="vs-row"><span>The topic of your question</span><span class="vs-yes">Categorized &amp; sold</span></div>
+        <div class="vs-row"><span>Brand names in model answers</span><span class="vs-yes">Extracted &amp; sold</span></div>
+        <div class="vs-row"><span>The verbatim text of conversations</span><span class="vs-no">Stored, never sold</span></div>
+        <div class="vs-row"><span>Your name and email</span><span class="vs-no">Auth only, never sold</span></div>
       </div>
 
-      <a class="vs-labslink" href="/labs">
-        For AI labs and research teams
+      <a class="vs-labslink" href="/what-we-collect">
+        Read exactly what enters, what leaves, and what stays inside
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
           <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
         </svg>
@@ -169,7 +171,8 @@ const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcni
 </section>
 
 <Footer links={[
-  { href: '/labs', label: 'Labs' },
+  { href: '/what-we-collect', label: 'What we collect' },
+  { href: '/data', label: 'Data' },
   { href: '/privacy', label: 'Privacy' },
   { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
 ]} />

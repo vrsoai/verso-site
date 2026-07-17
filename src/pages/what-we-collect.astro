@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import facts from '../content/facts';
+---
+
+<Layout
+  title="Verso — What we collect"
+  description="What Verso collects, what we derive from it, what we sell, and what never leaves. The full picture, in plain language."
+  ogTitle="Verso — What we collect"
+  ogDescription="The extension is free. Here's the exchange."
+  includeScrollReveal
+>
+
+<Nav variant="consumer" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">The exchange</span>
+  <h1 class="vs-rise">What you give us, <u>what we do with it,</u> what leaves.</h1>
+  <p class="vs-page-lede vs-rise">
+    Verso is free. In exchange, we measure which AI model wins on real work — and we sell
+    the measurement. This page explains exactly how that works. No summary, no euphemisms.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What enters</h2>
+    <p>When you use Verso, we store the following:</p>
+    <ul>
+      <li><b>Your prompts.</b> The questions you asked the model you were already using. We need them to categorize the type of work and to derive the comparison.</li>
+      <li><b>Both answers.</b> The response from the model you were using (ChatGPT, Claude, Gemini, or Perplexity) and the response from the Verso model you compared it against.</li>
+      <li><b>Your preference.</b> Which answer you chose — or if you called it a draw. This is the core signal. Every other metric we produce starts here.</li>
+      <li><b>The models compared.</b> Which specific model versions were on each side (e.g., GPT-4o vs. Claude Sonnet 4). Model identity is essential — without it, the preference is meaningless.</li>
+      <li><b>Your email address.</b> Collected through Google sign-in. Used for authentication and account management. Never shared, never sold, never included in any dataset.</li>
+    </ul>
+    {facts.dataResidency && (
+      <p>Data is stored in <b>{facts.dataResidency}</b>.</p>
+    )}
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What we derive</h2>
+    <p>From the raw data above, we produce four types of derived signal. This is what we actually sell.</p>
+    <div class="vs-two">
+      <div>
+        <h3>Preference rates</h3>
+        <p>Model A wins X% of the time against Model B, on a given type of question. The paired design — same prompt, two models, one choice — controls for prompt variance. A modest sample still resolves a real difference because the pairing does the work.</p>
+      </div>
+      <div>
+        <h3>Brand visibility</h3>
+        <p>Named brands and products as they appear in model <b>responses</b>. Not what users ask about — what models recommend. When someone asks "where should I stay in Lisbon," we record which hotels each model names, in what order, and whether that changes across model versions.</p>
+      </div>
+      <div>
+        <h3>Query taxonomy</h3>
+        <p>How people actually phrase questions — the formulations, the follow-ups, the distribution across verticals. Categorized, not quoted. The taxonomy is a structural map, not a conversation log.</p>
+      </div>
+      <div>
+        <h3>Longitudinal drift</h3>
+        <p>A fixed panel of prompts, replayed as model versions change. If Model A used to recommend Brand X and now recommends Brand Y, that shows up here. The signal is what moved, and when.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What we sell</h2>
+    <p>The derived signal described above. Specifically:</p>
+    <ul>
+      <li><b>Preference rates</b> by vertical and model pair — sold to AI labs and evaluation teams who need to know which model people actually prefer on real tasks.</li>
+      <li><b>Brand visibility scores</b> — sold to companies who want to know how they appear in AI-generated recommendations, and how that changes across models and versions.</li>
+      <li><b>Taxonomy and drift data</b> — sold as time series to investors and platforms tracking the AI market.</li>
+    </ul>
+    <p>Every deliverable is aggregate. The unit of sale is a rate, a distribution, or a trend — never a row.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What stays inside</h2>
+    <p>The raw text of your conversations. Your prompts, the full answers, word for word. We store them because we need them to produce the derived signal — you cannot categorize a question without reading it, and you cannot extract brand mentions without the full response.</p>
+    <p>But the raw text never leaves. It is not in any dataset we sell. It is not shared with third parties. It is not accessible to our buyers. If you ask us to delete it, we delete it.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What we don't have</h2>
+    <ul>
+      <li>Browsing history outside the AI assistant you're using.</li>
+      <li>Content from other tabs or applications.</li>
+      <li>Passwords, payment information, or form data.</li>
+      <li>Your location, contacts, or device identifiers beyond what's in a standard HTTP request.</li>
+    </ul>
+    <p>The extension runs on ChatGPT, Claude, Gemini, and Perplexity. It does not interact with any other website.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Why this page exists</h2>
+    <p>Most companies bury this information in a privacy policy written to satisfy lawyers. We have <a href="/privacy" style="color:var(--blue)">one of those too</a>. This page exists because the exchange — free extension for preference data — is the entire business model, and a user who understands it exactly is more valuable than one who doesn't.</p>
+    <p>If something on this page is unclear, that's a bug. Write to <a href="mailto:contact@tryverso.ai" style="color:var(--blue)">contact@tryverso.ai</a>.</p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/', label: 'Extension' },
+  { href: '/data', label: 'Data' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>
