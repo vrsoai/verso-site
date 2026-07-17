@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Sheet from '../../components/Sheet.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm';
+
+const demo = facts.sheetShopping;
+const isDraft = !demo;
+---
+
+<Layout
+  title="Verso for Shopping — See what a second model recommends"
+  description="AI models recommend different products with equal confidence. Verso shows you both answers before you buy."
+  ogTitle="Verso for Shopping"
+  ogDescription="Every product recommendation is a guess. Verso gives you a second one."
+  noindex={isDraft}
+  includeScrollReveal
+  includeSheet={!!demo}
+>
+
+<Nav variant="consumer" />
+
+<header class="vs-hero">
+  <div class="vs-wrap vs-hero-grid">
+    <div>
+      <div class="vs-eyebrow vs-rise"><em></em><span class="vs-mono">Shopping</span></div>
+
+      <h1 class="vs-h1 vs-rise">
+        <span class="rec">Every recommendation</span>
+        <span class="rec">is a</span>
+        <span class="ver">guess</span>
+      </h1>
+
+      <p class="vs-lede vs-rise">
+        You ask a model which laptop to buy. It gives you one answer and sounds certain.
+        A second model picks a <b>completely different laptop</b> — with the same confidence.
+        Verso shows you both, so you stop trusting the first answer you see.
+      </p>
+
+      <div class="vs-actions vs-rise" id="install">
+        <a class="vs-btn" href={chromeStoreUrl}>
+          Add to Chrome
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <span class="vs-note"><b>Free.</b> Works on ChatGPT, Claude, Gemini, Perplexity.</span>
+      </div>
+    </div>
+
+    {demo && (
+      <Sheet
+        front={{
+          label: 'Model A',
+          side: 'Recto',
+          questionPrefix: 'You asked:',
+          question: demo.question,
+          answer: demo.modelA.answer,
+          answerMark: demo.modelA.mark,
+          closing: demo.modelA.closing,
+          flipCue: 'Turn the page',
+          verdict: '1 of 2',
+        }}
+        back={{
+          label: 'Model B',
+          side: 'Verso',
+          questionPrefix: 'Same question:',
+          question: demo.question,
+          answer: demo.modelB.answer,
+          answerMark: demo.modelB.mark,
+          closing: demo.modelB.closing,
+          flipCue: 'Turn back',
+          verdict: demo.verdict,
+        }}
+      />
+    )}
+  </div>
+</header>
+
+<section class="vs-band" aria-hidden="true">
+  <div class="vs-marquee">
+    <p>
+      <span>One model picks the cheapest</span><span>The other picks the most reviewed</span><span>Same question, different cart</span><span>Only one checked the specs</span>
+      <span>One model picks the cheapest</span><span>The other picks the most reviewed</span><span>Same question, different cart</span><span>Only one checked the specs</span>
+    </p>
+  </div>
+</section>
+
+<section class="vs-steps" id="how">
+  <div class="vs-wrap">
+    <div class="vs-shead vs-rise">
+      <span class="vs-mono">Why it matters</span>
+      <h2>Product recommendations say more about the model than the product.</h2>
+      <p>Ask three models which running shoe to buy and you'll get three different answers — each delivered with total confidence. One optimizes for price, another for reviews, another for whatever was most common in its training data. None of them have run in any of those shoes. The only way to know if a recommendation is worth following is to see what a second model says about the same question.</p>
+    </div>
+
+    <div class="vs-steplist">
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 01</span>
+        <h3>Install once</h3>
+        <p>Verso opens as a side panel next to ChatGPT, Claude, Gemini, and Perplexity. Nothing to configure.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 02</span>
+        <h3>Ask what to buy</h3>
+        <p>Ask your model for product recommendations the way you normally would. Verso watches for questions where a second opinion matters.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 03</span>
+        <h3>Compare recommendations</h3>
+        <p>Your question goes to a second model. You see both product picks, side by side. If they agree, you have a stronger signal. If they disagree, you know to look closer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-trans" id="data">
+  <div class="vs-wrap vs-transgrid">
+    <div class="vs-rise">
+      <span class="vs-mono">The deal</span>
+      <h2>Verso is free because <u>preference is worth something.</u></h2>
+    </div>
+    <div class="vs-rise">
+      <p>Every time you pick one product recommendation over another, you answer a question no benchmark can: which model gives advice people actually follow. We collect your prompts, both answers, and your preference. We sell the measurement — not the conversations.</p>
+
+      <a class="vs-labslink" href="/what-we-collect">
+        Read exactly what we collect and what we sell
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-close">
+  <div class="vs-wrap vs-rise">
+    <h2>Stop trusting the <u>first answer.</u></h2>
+    <p>One click, one second opinion. The next time a model tells you what to buy, you'll know if a different model agrees.</p>
+    <a class="vs-btn" href={chromeStoreUrl}>
+      Add to Chrome — free
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<Footer links={[
+  { href: '/', label: 'Extension' },
+  { href: '/what-we-collect', label: 'What we collect' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Sheet from '../../components/Sheet.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm';
+
+const demo = facts.sheetCode;
+const isDraft = !demo;
+---
+
+<Layout
+  title="Verso for Code — See what a second model writes"
+  description="AI models generate different code for the same prompt. Verso shows you both implementations before you ship."
+  ogTitle="Verso for Code"
+  ogDescription="The model wrote your function. Another model would have written it differently."
+  noindex={isDraft}
+  includeScrollReveal
+  includeSheet={!!demo}
+>
+
+<Nav variant="consumer" />
+
+<header class="vs-hero">
+  <div class="vs-wrap vs-hero-grid">
+    <div>
+      <div class="vs-eyebrow vs-rise"><em></em><span class="vs-mono">Code</span></div>
+
+      <h1 class="vs-h1 vs-rise">
+        <span class="rec">Another model</span>
+        <span class="rec">would have</span>
+        <span class="ver">written it differently</span>
+      </h1>
+
+      <p class="vs-lede vs-rise">
+        You ask a model to write a function. It picks an approach, uses a library, handles
+        edge cases one way. A second model writes <b>different code for the same prompt</b>.
+        One of them has a bug you won't find until production. Verso shows you both.
+      </p>
+
+      <div class="vs-actions vs-rise" id="install">
+        <a class="vs-btn" href={chromeStoreUrl}>
+          Add to Chrome
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <span class="vs-note"><b>Free.</b> Works on ChatGPT, Claude, Gemini, Perplexity.</span>
+      </div>
+    </div>
+
+    {demo && (
+      <Sheet
+        front={{
+          label: 'Model A',
+          side: 'Recto',
+          questionPrefix: 'You asked:',
+          question: demo.question,
+          answer: demo.modelA.answer,
+          answerMark: demo.modelA.mark,
+          closing: demo.modelA.closing,
+          flipCue: 'Turn the page',
+          verdict: '1 of 2',
+        }}
+        back={{
+          label: 'Model B',
+          side: 'Verso',
+          questionPrefix: 'Same question:',
+          question: demo.question,
+          answer: demo.modelB.answer,
+          answerMark: demo.modelB.mark,
+          closing: demo.modelB.closing,
+          flipCue: 'Turn back',
+          verdict: demo.verdict,
+        }}
+      />
+    )}
+  </div>
+</header>
+
+<section class="vs-band" aria-hidden="true">
+  <div class="vs-marquee">
+    <p>
+      <span>One uses recursion</span><span>The other iterates</span><span>Same spec, different bugs</span><span>Only one handles the edge case</span>
+      <span>One uses recursion</span><span>The other iterates</span><span>Same spec, different bugs</span><span>Only one handles the edge case</span>
+    </p>
+  </div>
+</section>
+
+<section class="vs-steps" id="how">
+  <div class="vs-wrap">
+    <div class="vs-shead vs-rise">
+      <span class="vs-mono">Why it matters</span>
+      <h2>Code generation is the most expensive place to trust one answer.</h2>
+      <p>A wrong product recommendation wastes money. Wrong code wastes days. One model picks a recursive solution that blows the stack on large inputs. Another uses iteration but misses a null check. A third imports a library you've never heard of. The differences aren't cosmetic — they're architectural decisions that compound. Seeing a second implementation before you commit to the first is the cheapest code review you'll ever get.</p>
+    </div>
+
+    <div class="vs-steplist">
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 01</span>
+        <h3>Install once</h3>
+        <p>Verso opens as a side panel next to ChatGPT, Claude, Gemini, and Perplexity. Nothing to configure.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 02</span>
+        <h3>Write code normally</h3>
+        <p>Ask your model to generate functions, debug errors, or architect systems. Verso watches for prompts where a second implementation matters.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 03</span>
+        <h3>Read the other implementation</h3>
+        <p>Your prompt goes to a second model. Two implementations, side by side. Different approaches surface different trade-offs — before either one reaches production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-trans" id="data">
+  <div class="vs-wrap vs-transgrid">
+    <div class="vs-rise">
+      <span class="vs-mono">The deal</span>
+      <h2>Verso is free because <u>preference is worth something.</u></h2>
+    </div>
+    <div class="vs-rise">
+      <p>Every time you pick one code implementation over another, you answer a question every AI lab wants answered: which model writes code that developers actually use. We collect your prompts, both answers, and your preference. We sell the measurement — not the conversations.</p>
+
+      <a class="vs-labslink" href="/what-we-collect">
+        Read exactly what we collect and what we sell
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-close">
+  <div class="vs-wrap vs-rise">
+    <h2>Get a <u>second implementation.</u></h2>
+    <p>One click, one second opinion. The cheapest code review is seeing what another model writes for the same prompt.</p>
+    <a class="vs-btn" href={chromeStoreUrl}>
+      Add to Chrome — free
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<Footer links={[
+  { href: '/', label: 'Extension' },
+  { href: '/what-we-collect', label: 'What we collect' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Sheet from '../../components/Sheet.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const chromeStoreUrl = 'https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm';
+
+const demo = facts.sheetResearch;
+const isDraft = !demo;
+---
+
+<Layout
+  title="Verso for Research — See what a second model claims"
+  description="AI models state facts with equal confidence whether they're right or wrong. Verso shows you what another model says about the same question."
+  ogTitle="Verso for Research"
+  ogDescription="One model cited a paper. The other model says it doesn't exist."
+  noindex={isDraft}
+  includeScrollReveal
+  includeSheet={!!demo}
+>
+
+<Nav variant="consumer" />
+
+<header class="vs-hero">
+  <div class="vs-wrap vs-hero-grid">
+    <div>
+      <div class="vs-eyebrow vs-rise"><em></em><span class="vs-mono">Research</span></div>
+
+      <h1 class="vs-h1 vs-rise">
+        <span class="rec">One model cited</span>
+        <span class="rec">a paper that</span>
+        <span class="ver">doesn't exist</span>
+      </h1>
+
+      <p class="vs-lede vs-rise">
+        You ask a model for evidence. It gives you authors, titles, dates — and sounds
+        completely certain. A second model <b>contradicts the claim entirely</b>,
+        or cites different sources. Verso shows you both, so you know when to verify.
+      </p>
+
+      <div class="vs-actions vs-rise" id="install">
+        <a class="vs-btn" href={chromeStoreUrl}>
+          Add to Chrome
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </a>
+        <span class="vs-note"><b>Free.</b> Works on ChatGPT, Claude, Gemini, Perplexity.</span>
+      </div>
+    </div>
+
+    {demo && (
+      <Sheet
+        front={{
+          label: 'Model A',
+          side: 'Recto',
+          questionPrefix: 'You asked:',
+          question: demo.question,
+          answer: demo.modelA.answer,
+          answerMark: demo.modelA.mark,
+          closing: demo.modelA.closing,
+          flipCue: 'Turn the page',
+          verdict: '1 of 2',
+        }}
+        back={{
+          label: 'Model B',
+          side: 'Verso',
+          questionPrefix: 'Same question:',
+          question: demo.question,
+          answer: demo.modelB.answer,
+          answerMark: demo.modelB.mark,
+          closing: demo.modelB.closing,
+          flipCue: 'Turn back',
+          verdict: demo.verdict,
+        }}
+      />
+    )}
+  </div>
+</header>
+
+<section class="vs-band" aria-hidden="true">
+  <div class="vs-marquee">
+    <p>
+      <span>One cites a study</span><span>The other can't find it</span><span>Both sound certain</span><span>Only one checked the source</span>
+      <span>One cites a study</span><span>The other can't find it</span><span>Both sound certain</span><span>Only one checked the source</span>
+    </p>
+  </div>
+</section>
+
+<section class="vs-steps" id="how">
+  <div class="vs-wrap">
+    <div class="vs-shead vs-rise">
+      <span class="vs-mono">Why it matters</span>
+      <h2>Hallucinated citations look exactly like real ones.</h2>
+      <p>Models fabricate references with correct formatting — plausible author names, real-looking journal titles, convincing dates. There is no visual cue that distinguishes a real citation from an invented one. A second model won't catch every fabrication, but when two models disagree about whether a paper exists, whether a statistic is correct, or what a study actually found, you know something needs checking. Disagreement is a signal. Agreement between two independent models is a stronger one.</p>
+    </div>
+
+    <div class="vs-steplist">
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 01</span>
+        <h3>Install once</h3>
+        <p>Verso opens as a side panel next to ChatGPT, Claude, Gemini, and Perplexity. Nothing to configure.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 02</span>
+        <h3>Research normally</h3>
+        <p>Ask your model for sources, summaries, data, or analysis. Verso watches for factual claims where a second perspective matters.</p>
+      </div>
+      <div class="vs-step vs-rise">
+        <span class="vs-stepnum">STEP 03</span>
+        <h3>Cross-check the answer</h3>
+        <p>Your question goes to a second model. Two answers, side by side. When they agree, your confidence goes up. When they disagree, you know exactly where to look.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vs-trans" id="data">
+  <div class="vs-wrap vs-transgrid">
+    <div class="vs-rise">
+      <span class="vs-mono">The deal</span>
+      <h2>Verso is free because <u>preference is worth something.</u></h2>
+    </div>
+    <div class="vs-rise">
+      <p>Every time you pick one answer over another on a factual question, you help measure something that matters: which model gets the facts right, and which one sounds right without being right. We collect your prompts, both answers, and your preference. We sell the measurement — not the conversations.</p>
+
+      <a class="vs-labslink" href="/what-we-collect">
+        Read exactly what we collect and what we sell
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-close">
+  <div class="vs-wrap vs-rise">
+    <h2>Check the <u>other source.</u></h2>
+    <p>One click, one second opinion. Before you cite what a model told you, see if another model agrees.</p>
+    <a class="vs-btn" href={chromeStoreUrl}>
+      Add to Chrome — free
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<Footer links={[
+  { href: '/', label: 'Extension' },
+  { href: '/what-we-collect', label: 'What we collect' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>
