@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const sampleMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20delivery%20question';
+---
+
+<Layout
+  title="Verso Data — Delivery"
+  description="How Verso data is delivered: formats, frequency, latency, and what's in each export."
+  ogTitle="Verso Data — Delivery"
+  ogDescription="Weekly exports. CSV, Parquet, JSON. Here's how it works."
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Delivery</span>
+  <h1 class="vs-rise">What you receive, <u>and how.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Every deliverable is aggregate. The unit of sale is a rate, a distribution, or a
+    trend — never a row of raw data. This page describes the format, frequency, and
+    contents of each delivery.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>Delivery specs</h2>
+    <table class="vs-table">
+      <tbody>
+        {facts.deliveryFrequency && (
+          <tr>
+            <td><b>Frequency</b></td>
+            <td>{facts.deliveryFrequency}</td>
+          </tr>
+        )}
+        {facts.deliveryLatency && (
+          <tr>
+            <td><b>Latency</b></td>
+            <td>{facts.deliveryLatency}</td>
+          </tr>
+        )}
+        {facts.deliveryFormats && (
+          <tr>
+            <td><b>Formats</b></td>
+            <td>{facts.deliveryFormats.join(', ')}</td>
+          </tr>
+        )}
+        {facts.deliverySLA && (
+          <tr>
+            <td><b>SLA</b></td>
+            <td>{facts.deliverySLA}</td>
+          </tr>
+        )}
+        <tr>
+          <td><b>API access</b></td>
+          <td>{facts.apiAvailable ? 'Available' : 'Coming soon'}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What's in each export</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Preference rates</h3>
+        <p>Win rates per model pair, per vertical, with sample sizes and confidence intervals. Each row is a model-pair × vertical × language cell. Rates are computed from the collection period since the last export.</p>
+      </div>
+      <div>
+        <h3>Brand visibility scores</h3>
+        <p>Brand mention frequency, position, and framing per model, per vertical. Each row is a brand × model × vertical cell. Includes cross-model comparison (does Model A mention this brand more than Model B?).</p>
+      </div>
+      <div>
+        <h3>Query taxonomy</h3>
+        <p>Distribution of query types per vertical. Categories, sub-categories, and the volume of distinct prompts in each. Structural, not verbatim — the taxonomy describes what people ask about, not how they phrased it.</p>
+      </div>
+      <div>
+        <h3>Drift deltas</h3>
+        <p>Changes in preference rates and brand mentions between model versions. Each row is a model-version × vertical × metric cell, showing the delta from the previous version. Produced from the fixed prompt panel, not from organic traffic.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What is not in the export</h2>
+    <ul>
+      <li><b>Raw prompts.</b> The verbatim text of user questions is never included in any export. Taxonomy categories are structural, not quoted.</li>
+      <li><b>Raw responses.</b> The verbatim text of model answers is never included. Brand mentions are extracted and aggregated; the full response stays inside.</li>
+      <li><b>User identifiers.</b> No email addresses, device identifiers, or anything that could identify an individual user.</li>
+      <li><b>Individual rows.</b> Every deliverable is aggregate. If a cell has too few observations to publish a stable rate, it is reported as a delta or omitted entirely.</li>
+    </ul>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Custom deliveries</h2>
+    <p>If you need a specific vertical, language, model pair, or delivery cadence that isn't covered by the standard export, we build it. Sponsored panels can be paired with custom delivery schedules to match your evaluation cycle or reporting cadence.</p>
+    <p style="margin-top:26px">
+      <a class="vs-btn" href={sampleMailto}>
+        Ask a delivery question
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

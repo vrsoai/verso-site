@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const sampleMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request%20(AI%20lab)';
+---
+
+<Layout
+  title="Verso Data for AI Labs — Preference from real work"
+  description="Paired-comparison preference data from organic prompts. Model A vs. Model B, judged by the person who asked. Not annotators, not synthetic benchmarks."
+  ogTitle="Verso Data for AI Labs"
+  ogDescription="Your benchmark uses curated prompts. Ours uses real ones."
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">For AI labs &amp; evaluation teams</span>
+  <h1 class="vs-rise">Your benchmark uses curated prompts. <u>Ours uses real ones.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    You already know that benchmark performance doesn't predict user preference.
+    Verso gives you paired comparisons — same prompt, two models, one winner — from
+    the messy, underspecified questions real users actually ask. The pairing controls for
+    prompt variance. The organic distribution controls for everything else.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What you get</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Preference rates by vertical</h3>
+        <p>Model A is preferred X% of the time against Model B on shopping questions. On code, the result inverts. You get the breakdown by vertical, with sample sizes and confidence intervals. Not a single number — a surface.</p>
+      </div>
+      <div>
+        <h3>Organic prompt distribution</h3>
+        <p>The taxonomy of what your users actually ask. Not what your prompt engineers thought they'd ask — what they asked. Usable as a seed layer for evaluation sets, or as a reality check against existing ones.</p>
+      </div>
+      <div>
+        <h3>Version-over-version drift</h3>
+        <p>A fixed prompt panel replayed against every model version you ship. Did your latest fine-tuning help on code and hurt on travel? The drift data tells you before your users do.</p>
+      </div>
+      <div>
+        <h3>Position-bias estimates</h3>
+        <p>The user's original model always appears first. We measure the position effect per vertical and report it alongside every rate. You decide whether to correct for it or report it separately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Why paired comparisons from organic prompts</h2>
+    <p>Unpaired evaluations confound model quality with prompt difficulty. Synthetic prompts confound model quality with distribution mismatch. Verso's paired design eliminates the first problem — both models see the same prompt. Organic collection eliminates the second — the prompts come from real workflows, not from evaluation designers. What remains is a clean preference signal on the distribution that matters: the one your users are actually on.</p>
+  </section>
+
+  {facts.coverage && facts.coverage.length > 0 && (
+    <section class="vs-block vs-rise">
+      <h2>Current coverage</h2>
+      <p>
+        {facts.totalDistinctPrompts?.toLocaleString()} distinct prompts across
+        {facts.activeVerticals} verticals and {facts.modelsCompared} model comparisons{facts.collectionStartDate && <>, since {facts.collectionStartDate}</>}.
+      </p>
+      <a class="vs-labslink" href="/data/coverage">
+        See the full coverage table
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </section>
+  )}
+
+  <section class="vs-block vs-rise">
+    <h2>Delivery</h2>
+    <p>
+      {facts.deliveryFrequency} exports in {facts.deliveryFormats?.join(', ')}.
+      {facts.deliveryLatency && <> Latency: {facts.deliveryLatency}.</>}
+      Custom verticals and model pairs available through sponsored panels.
+    </p>
+    <a class="vs-labslink" href="/data/delivery">
+      See full delivery specs
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={sampleMailto}>
+        Request a sample
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

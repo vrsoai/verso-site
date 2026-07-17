@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const sampleMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request%20(brand%20visibility)';
+---
+
+<Layout
+  title="Verso Data for Brands — How AI models talk about you"
+  description="When someone asks an AI what to buy, does it mention your brand? Verso measures brand visibility across models, versions, and query types."
+  ogTitle="Verso Data for Brands"
+  ogDescription="When someone asks a model what to buy, does it mention you?"
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">For brands &amp; e-commerce</span>
+  <h1 class="vs-rise">AI models recommend products. <u>Do they recommend yours?</u></h1>
+  <p class="vs-page-lede vs-rise">
+    People are asking AI models what to buy — and the models are answering. When someone
+    asks "best wireless earbuds," the model names specific brands. Verso measures which
+    brands each model recommends, how often, in what position, and whether that changes
+    when the model updates.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What you get</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Brand mention frequency</h3>
+        <p>How often your brand appears in model responses to relevant queries, compared to competitors. Broken out by model, by query type, and by time period. If GPT mentions you in 40% of "best laptop" queries and Claude mentions you in 15%, that's a signal you can act on.</p>
+      </div>
+      <div>
+        <h3>Position and framing</h3>
+        <p>Being mentioned first is different from being mentioned third. Being the recommendation is different from being the comparison. We record where your brand appears in the response and how it's framed — recommended, compared, cautioned against, or merely listed.</p>
+      </div>
+      <div>
+        <h3>Version drift alerts</h3>
+        <p>Model updates can change recommendations overnight. A fixed prompt panel detects when your brand's visibility shifts — up or down — and which model version caused it. You know about the change before your customers notice.</p>
+      </div>
+      <div>
+        <h3>Competitive landscape</h3>
+        <p>Which competitors appear alongside your brand, which appear instead of it, and how the competitive set changes across models. One model may position you against Brand X; another positions you against Brand Y. The competitive frame is model-dependent, and now you can see it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Why AI visibility matters now</h2>
+    <p>Search visibility has been measurable for two decades. AI visibility is not — yet. But the shift is happening: when a consumer asks an AI model what to buy, they get one answer, not ten blue links. That answer names specific brands. If your brand isn't in it, you're invisible in a channel that's growing faster than any other. Verso gives you the measurement layer that search had from day one.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>How the data is collected</h2>
+    <p>Verso is a Chrome extension used by real people doing real work. When someone asks a product question, both the original model and a second model answer. We record which brands each model mentions, in what order, with what framing. The prompts are organic — they come from real purchase consideration, not from a researcher typing test queries. That means the distribution of queries matches actual consumer demand.</p>
+    <a class="vs-labslink" href="/data/methodology">
+      Read the full methodology
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={sampleMailto}>
+        Request a sample
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

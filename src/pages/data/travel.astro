@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const sampleMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request%20(travel)';
+---
+
+<Layout
+  title="Verso Data for Travel — Hotel and destination visibility in AI answers"
+  description="When someone asks an AI where to stay, what does it recommend? Verso measures hotel, airline, and destination mentions across models and versions."
+  ogTitle="Verso Data for Travel"
+  ogDescription="When someone asks a model where to stay, which hotel does it name?"
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">For OTAs &amp; travel brands</span>
+  <h1 class="vs-rise">Travelers are asking AI models. <u>What are the models answering?</u></h1>
+  <p class="vs-page-lede vs-rise">
+    "Where should I stay in Lisbon" used to be a search query. Now it's a prompt. The model
+    gives one answer — a specific hotel, a specific neighborhood — with complete confidence.
+    Verso measures which properties each model recommends, how that changes across model
+    versions, and what travelers actually prefer when shown two answers.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What you get</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Property mention rates</h3>
+        <p>Which hotels, airlines, and destinations each model names in response to travel queries. Broken out by model, destination, and query type. When GPT recommends Hotel A and Claude recommends Hotel B for the same question, both mentions are recorded with position and framing.</p>
+      </div>
+      <div>
+        <h3>Destination-level visibility</h3>
+        <p>How models describe destinations — which neighborhoods they recommend, which they warn against, what price tier they default to. The destination narrative is model-dependent, and it shapes where travelers look before they book.</p>
+      </div>
+      <div>
+        <h3>Version drift for travel</h3>
+        <p>A fixed panel of travel prompts replayed as model versions change. Did a model stop recommending your property after a fine-tuning update? Did a competitor suddenly appear in responses where they weren't before? The drift data catches it.</p>
+      </div>
+      <div>
+        <h3>Traveler preference signal</h3>
+        <p>When shown two model answers for the same travel question, which one does the traveler prefer? This preference signal — organic, paired, and specific to travel — tells you which model's recommendations travelers actually trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>The shift from search to prompts</h2>
+    <p>In search, travelers see ten results and choose. In AI, they get one answer and act on it. The model's recommendation carries disproportionate weight because there's no comparison set — unless the traveler seeks one out. Verso creates that comparison by showing a second model's answer. The data that comes out tells you not just what models recommend, but which recommendation travelers prefer when they can see both.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Sponsored travel panels</h2>
+    <p>Travel queries are destination-specific. If you need depth on Lisbon, or Tokyo, or the Greek islands, organic coverage may not be enough. A sponsored panel recruits travelers planning specific trips and builds density on the destinations and property types you care about. You get the signal where you need it, not where it happened to occur.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={sampleMailto}>
+        Request a sample
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

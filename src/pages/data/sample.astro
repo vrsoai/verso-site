@@ -1,0 +1,14 @@
+---
+// /data/sample → mailto redirect (correction #7)
+// This page exists so that /data/sample resolves instead of 404.
+// It immediately redirects to a pre-filled mailto link.
+const mailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request';
+---
+
+<!doctype html>
+<title>Verso — Request a sample</title>
+<meta http-equiv="refresh" content={`0;url=${mailto}`}>
+<meta name="robots" content="noindex">
+<body>
+  <p>Opening your email client… If nothing happens, <a href={mailto}>click here</a>.</p>
+</body>

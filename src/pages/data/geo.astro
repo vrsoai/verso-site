@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+const sampleMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request%20(GEO)';
+---
+
+<Layout
+  title="Verso Data for GEO — Brand visibility in AI answers"
+  description="Which brands do AI models recommend, in what order, and how does that change across model versions? Verso measures it from real user queries."
+  ogTitle="Verso Data for GEO Platforms"
+  ogDescription="Which brands do models recommend — and did that change last week?"
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">For GEO platforms</span>
+  <h1 class="vs-rise">You optimize for search. <u>Models don't search.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Generative Engine Optimization assumes you can influence what models recommend. To do
+    that, you need to know what they recommend today, how that changes across versions, and
+    what real users actually ask. Verso measures all three — from organic prompts, not
+    synthetic ones.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What you get</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Brand mention rates</h3>
+        <p>Which brands each model names in its responses, and how often. Not what users ask about — what models recommend. When someone asks "best running shoes," we record which brands appear in each model's answer, in what position, and with what framing.</p>
+      </div>
+      <div>
+        <h3>Cross-model comparison</h3>
+        <p>The same question, answered by two models. Does GPT recommend Nike while Claude recommends Brooks? Does the recommendation change when the question is phrased differently? The paired design gives you brand visibility per model, per vertical, per query formulation.</p>
+      </div>
+      <div>
+        <h3>Version-over-version drift</h3>
+        <p>A fixed prompt panel replayed as model versions change. If GPT-4o recommended your client's hotel and GPT-4.5 stopped, that shows up here. The signal is what moved, when it moved, and which model version caused it.</p>
+      </div>
+      <div>
+        <h3>Query formulation map</h3>
+        <p>How real users phrase questions that trigger brand mentions. "Best hotel in Lisbon" and "where should I stay in Lisbon" may produce different recommendations from the same model. The formulation map shows you which phrasings your client's brand appears in — and which ones it doesn't.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Why this data is different</h2>
+    <p>Most GEO data comes from synthetic prompts — someone on your team writes "best laptop 2025" and records what the model says. That works for spot checks. It doesn't work for measurement, because the prompts don't match what real users ask, the frequency distribution is wrong, and you're only testing the formulations you thought of.</p>
+    <p>Verso's data comes from organic prompts. Real users, real questions, real context. The query taxonomy reflects actual demand, not what a researcher hypothesized. And because the data is continuous — not a one-time audit — you can track how brand visibility shifts week over week as models update.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Sponsored panels for your vertical</h2>
+    <p>If your client's vertical is thin in our organic coverage, we recruit for it. A sponsored panel targets consenting users in a specific category — travel, e-commerce, finance — and builds depth on the queries that matter to your client. You get brand visibility data at the granularity you need, not the granularity that happened organically.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={sampleMailto}>
+        Request a sample
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>
