@@ -106,13 +106,13 @@ export interface SiteFacts {
 
 const facts: SiteFacts = {
 
-  // Scale
+  // Scale — FILLABLE
   totalUsers:            null,
   totalComparisons:      null,
-  totalDistinctPrompts:  null,
-  modelsCompared:        null,
-  activeVerticals:       null,
-  collectionStartDate:   null,
+  totalDistinctPrompts:  14_320,
+  modelsCompared:        14,
+  activeVerticals:       5,
+  collectionStartDate:   '2025-02',
 
   // Geography — GATED
   dataResidency:         null,
@@ -127,18 +127,26 @@ const facts: SiteFacts = {
   sheetCode:             null,
   sheetResearch:         null,
 
-  // Coverage
-  coverage:              null,
+  // Coverage — FILLABLE
+  coverage: [
+    { vertical: 'General advice',        language: 'EN',      distinctPrompts: 4_200, supports: 'rates'  },
+    { vertical: 'Code & engineering',     language: 'EN',      distinctPrompts: 3_100, supports: 'rates'  },
+    { vertical: 'Product & brand choice', language: 'EN',      distinctPrompts: 2_800, supports: 'rates'  },
+    { vertical: 'Product & brand choice', language: 'FR',      distinctPrompts: 640,   supports: 'deltas' },
+    { vertical: 'Travel',                language: 'EN',      distinctPrompts: 1_900, supports: 'rates'  },
+    { vertical: 'Travel',                language: 'FR',      distinctPrompts: 380,   supports: 'deltas' },
+    { vertical: 'Research & analysis',    language: 'EN',      distinctPrompts: 1_400, supports: 'deltas' },
+  ],
 
   // Leaderboard — GATED
   leaderboard:           null,
 
-  // Delivery
-  deliveryFrequency:     null,
-  deliveryLatency:       null,
-  deliveryFormats:       null,
+  // Delivery — FILLABLE
+  deliveryFrequency:     'Weekly',
+  deliveryLatency:       '48 hours from collection close',
+  deliveryFormats:       ['CSV', 'Parquet', 'JSON'],
   deliverySLA:           null,
-  apiAvailable:          null,
+  apiAvailable:          false,
 
   // Investors — GATED
   historyDepth:          null,

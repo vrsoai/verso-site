@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+---
+
+<Layout
+  title="Verso Data — Coverage"
+  description="Distinct prompts per vertical and language. What supports full preference rates, what supports deltas only, and where we're still building depth."
+  ogTitle="Verso Data — Coverage"
+  ogDescription="What we cover, and where we're still building depth."
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Coverage</span>
+  <h1 class="vs-rise">What we cover, <u>and what we don't.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Every cell in the table below represents a vertical–language pair. Cells with sufficient
+    depth support full preference rates with confidence intervals. Thinner cells support
+    model-vs-model deltas — enough to detect a winner, not enough to publish a stable rate.
+    We say which is which.
+  </p>
+
+  {facts.coverage && facts.coverage.length > 0 && (
+    <section class="vs-block vs-rise">
+      <h2>Coverage table</h2>
+      <p>Distinct prompts per cell. Updated as the dataset grows.</p>
+
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Vertical</th>
+            <th>Language</th>
+            <th>Distinct prompts</th>
+            <th>Supports</th>
+          </tr>
+        </thead>
+        <tbody>
+          {facts.coverage.map(cell => (
+            <tr>
+              <td>{cell.vertical}</td>
+              <td>{cell.language}</td>
+              <td>{cell.distinctPrompts.toLocaleString()}</td>
+              <td class={cell.supports === 'rates' ? 'vs-yes' : 'vs-muted'}>{cell.supports === 'rates' ? 'Full rates' : 'Deltas only'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {facts.totalDistinctPrompts && (
+        <p class="vs-note" style="margin-top:16px">
+          Total: <b>{facts.totalDistinctPrompts.toLocaleString()}</b> distinct prompts across
+          <b>{facts.modelsCompared}</b> model comparisons{facts.collectionStartDate && <>, since {facts.collectionStartDate}</>}.
+        </p>
+      )}
+    </section>
+  )}
+
+  <section class="vs-block vs-rise">
+    <h2>What "distinct prompts" means</h2>
+    <p>A distinct prompt is a unique user question, deduplicated by semantic similarity. If five users ask "best noise-cancelling headphones" in slightly different words, that counts as one distinct prompt with five paired observations. The metric that matters for statistical power is distinct prompts, not total comparisons — because paired observations on the same prompt are not independent.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Rates vs. deltas</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Full rates</h3>
+        <p>Cells with enough distinct prompts support a preference rate — "Model A is preferred X% of the time on shopping questions in English" — with a confidence interval narrow enough to be useful. This is the primary deliverable for AI labs running model evaluations.</p>
+      </div>
+      <div>
+        <h3>Deltas only</h3>
+        <p>Thinner cells can still detect which model wins on a given vertical, but the rate estimate is too wide to publish. These cells are useful for directional signal — "Model A outperforms Model B on French travel queries" — but not for reporting a stable number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Growing a thin cell</h2>
+    <p>If a cell you care about is thin — or missing entirely — we can recruit for it. Sponsored panels target consenting users in a specific vertical and language. The panel runs for a defined period, the data accumulates, and the cell moves from deltas-only to full rates. This is how we build depth in verticals that don't occur organically at high volume.</p>
+    <p style="margin-top:26px">
+      <a class="vs-btn" href="mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sponsored%20panel%20inquiry">
+        Inquire about a sponsored panel
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/', label: 'Extension' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

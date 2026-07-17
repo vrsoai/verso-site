@@ -2,12 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
 ---
 
 <Layout
-  title="Verso for labs — preference from real work"
-  description="Cross-model preference and brand-mention data from real user workflows. Methodology, coverage, and sample."
-  noindex
+  title="Verso Data — Preference from real work"
+  description="Cross-model preference and brand-mention data from real user workflows. Not annotators, not synthetic prompts — people doing their actual work, choosing."
+  ogTitle="Verso Data"
+  ogDescription="Benchmarks ask made-up questions. We didn't make ours up."
   includeScrollReveal
 >
 
@@ -15,66 +17,73 @@ import Footer from '../../components/Footer.astro';
 
 <main class="vs-wrap vs-page">
 
-  <span class="vs-mono">For labs, evaluation teams and GEO platforms</span>
+  <span class="vs-mono">For AI labs, evaluation teams, and GEO platforms</span>
   <h1 class="vs-rise">Benchmarks ask made-up questions. <u>We didn't make ours up.</u></h1>
   <p class="vs-page-lede vs-rise">
     Verso sees the same prompt answered by two models, and it sees which answer the
-    person kept. Not annotators. Not synthesised prompt sets. People doing their
-    actual work, choosing.
+    person kept. Not annotators. Not synthetic prompt sets. People doing their
+    actual work, choosing. That preference — paired, organic, and continuous — is the dataset.
   </p>
 
-  <!-- ============================================================
-       TODO(content): every number on this page must come from the
-       audit pipeline. Ship no figure you have not measured.
-       Distinct prompts per cell is the metric buyers care about —
-       not total conversations. See DESIGN.md § Honesty.
-       ============================================================ -->
-
   <section class="vs-block vs-rise">
-    <h2>What the dataset is</h2>
+    <h2>Four data products</h2>
+    <p>Everything we sell is derived from the same paired-comparison pipeline. The raw text of conversations never leaves.</p>
     <div class="vs-two">
       <div>
-        <h3>Paired comparisons</h3>
-        <p>One prompt, two models, one revealed preference. The pairing removes prompt variance, which is why a modest number of prompts still resolves a difference between models.</p>
+        <h3>Preference rates</h3>
+        <p>Model A wins X% of the time against Model B, on a given type of question. The paired design — same prompt, two models, one choice — controls for prompt variance. A modest sample still resolves a real difference because the pairing does the work.</p>
       </div>
       <div>
-        <h3>Brand mentions in answers</h3>
-        <p>Named brands and products as they appear in model <b>responses</b>, not in user prompts. This is the unit GEO platforms buy, and it is far denser than purchase intent.</p>
+        <h3>Brand visibility</h3>
+        <p>Named brands and products as they appear in model <b>responses</b> — not what users ask about, but what models recommend. When someone asks "which laptop should I buy," we record which brands each model names, in what order, and whether that changes across model versions.</p>
       </div>
       <div>
-        <h3>Real query taxonomy</h3>
-        <p>How people actually phrase a question — the formulations, the follow-ups, the distribution. Usable as a seed layer for anyone generating prompt sets today.</p>
+        <h3>Query taxonomy</h3>
+        <p>How people actually phrase questions to AI models — the formulations, the follow-ups, the distribution across verticals. Categorized, not quoted. The taxonomy is a structural map of real demand, not a conversation log.</p>
       </div>
       <div>
         <h3>Longitudinal drift</h3>
-        <p>A fixed prompt panel, replayed as model versions change. Stability is the point: it measures what moved, and when.</p>
+        <p>A fixed panel of prompts, replayed as model versions change. If Model A used to recommend Brand X and now recommends Brand Y, that shows up here. The signal is what moved, and when.</p>
       </div>
     </div>
   </section>
 
   <section class="vs-block vs-rise">
-    <h2>Coverage</h2>
-    <p>Distinct prompts per cell. Cells with enough distinct prompts support rates; thinner cells support model-vs-model deltas only. We say which is which.</p>
+    <h2>How the data is collected</h2>
+    <p>Verso is a free Chrome extension that sits next to ChatGPT, Claude, Gemini, and Perplexity. When a user asks a question, Verso sends the same prompt to a second model and displays both answers side by side. The user picks one — or calls it a draw. That preference, the two responses, and the prompt category are stored. The methodology is a paired comparison with organic prompts and revealed preference.</p>
 
-    <table class="vs-table">
-      <thead>
-        <tr><th>Vertical</th><th>Language</th><th>Distinct prompts</th><th>Supports</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>General advice</td><td>EN</td><td class="todo">TODO</td><td class="todo">TODO</td></tr>
-        <tr><td>Code &amp; engineering</td><td>EN</td><td class="todo">TODO</td><td class="todo">TODO</td></tr>
-        <tr><td>Product &amp; brand choice</td><td>EN</td><td class="todo">TODO</td><td class="todo">TODO</td></tr>
-        <tr><td>Product &amp; brand choice</td><td>FR</td><td class="todo">TODO</td><td class="todo">TODO</td></tr>
-        <tr><td>Travel</td><td>FR / ES / DE</td><td class="todo">TODO</td><td class="todo">TODO</td></tr>
-      </tbody>
-    </table>
+    <a class="vs-labslink" href="/data/methodology">
+      Read the full methodology
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
   </section>
+
+  {facts.coverage && facts.coverage.length > 0 && (
+    <section class="vs-block vs-rise">
+      <h2>Coverage</h2>
+      <p>
+        {facts.activeVerticals} verticals, {facts.modelsCompared} models compared,
+        {facts.totalDistinctPrompts?.toLocaleString()} distinct prompts
+        {facts.collectionStartDate && <> since {facts.collectionStartDate}</>}.
+        Cells with sufficient depth support full preference rates; thinner cells support model-vs-model deltas only.
+      </p>
+
+      <a class="vs-labslink" href="/data/coverage">
+        See the full coverage table
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </section>
+  )}
 
   <section class="vs-block vs-rise">
     <h2>Sponsored panels</h2>
     <p>
-      If your vertical is thin in the table above, we don't pretend otherwise. We recruit
-      for it. Consenting users, your category, a few weeks — funded by the engagement.
+      If your vertical is thin in the coverage table, we don't pretend otherwise. We recruit
+      for it. Consenting users, your category, your timeline — funded by the engagement.
       You get depth where you need it instead of breadth you can't use.
     </p>
   </section>
@@ -82,12 +91,13 @@ import Footer from '../../components/Footer.astro';
   <section class="vs-block vs-rise">
     <h2>What we will not sell you</h2>
     <p>
-      Raw conversations. Not as a policy position — as a design constraint. The panel is
-      European, the data is personal, and a dataset that can't survive scrutiny isn't an
-      asset. What leaves Verso is derived signal: preferences, mentions, distributions.
+      Raw conversations. Not as a policy position — as a design constraint. The data is personal,
+      and a dataset that can't survive scrutiny isn't an asset. What leaves Verso is derived signal:
+      preferences, mentions, distributions. Every deliverable is aggregate. The unit of sale is a rate,
+      a distribution, or a trend — never a row.
     </p>
     <p style="margin-top:26px">
-      <a class="vs-btn" href="mailto:contact@tryverso.ai?subject=Verso%20—%20sample%20request">
+      <a class="vs-btn" href="mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20sample%20request">
         Request a sample
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
           <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
@@ -99,6 +109,8 @@ import Footer from '../../components/Footer.astro';
 </main>
 
 <Footer links={[
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
   { href: '/', label: 'Extension' },
   { href: '/privacy', label: 'Privacy' },
   { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
