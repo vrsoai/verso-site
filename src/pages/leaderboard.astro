@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import facts from '../content/facts';
+
+const hasData = facts.leaderboard && facts.leaderboard.length > 0;
+---
+
+<Layout
+  title="Verso Leaderboard — Which model wins on real work"
+  description="Model preference rankings from paired comparisons on real user prompts. Not benchmarks — revealed preference from people doing their actual work."
+  ogTitle="Verso Leaderboard"
+  ogDescription="Which model wins on real work. Ranked by the people who use them."
+  noindex
+  includeScrollReveal
+>
+
+<Nav variant="consumer" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Leaderboard</span>
+  <h1 class="vs-rise">Which model wins <u>on real work.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Benchmarks test what evaluation designers think matters. This leaderboard tests what
+    actually matters — the questions real people ask, judged by the people who asked them.
+    Every ranking below comes from paired comparisons: same prompt, two models, one choice.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>How the rankings work</h2>
+    <p>Each ranking is computed from paired comparisons collected through the Verso extension. A user asks a question on ChatGPT, Claude, Gemini, or Perplexity. Verso sends the same prompt to a second model. The user sees both answers and picks one. The win rate is the percentage of times a model was preferred when it appeared in a pair.</p>
+    <p>Rankings are broken out by vertical because model performance varies dramatically by task. A model that dominates on code may lose on travel. A model that wins on product recommendations may underperform on research. Aggregate rankings hide these differences — vertical rankings surface them.</p>
+  </section>
+
+  {hasData ? (
+    facts.leaderboard!.map(vertical => (
+      <section class="vs-block vs-rise">
+        <h2>{vertical.vertical}</h2>
+        <p>{vertical.sampleSize.toLocaleString()} paired comparisons · {vertical.period}</p>
+        <table class="vs-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Model</th>
+              <th>Win rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {vertical.rankings.map((r, i) => (
+              <tr>
+                <td>{i + 1}</td>
+                <td>{r.model}</td>
+                <td><b>{r.winRate}%</b></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))
+  ) : (
+    <section class="vs-block vs-rise">
+      <h2>Rankings are coming</h2>
+      <p>The leaderboard requires enough paired comparisons per vertical to produce stable rankings. We publish rankings only when the sample size supports confidence intervals narrow enough to distinguish between models. Invented numbers help no one — we'd rather show nothing than show noise.</p>
+      <p>When the dataset reaches sufficient depth, this page will display win rates by vertical, with sample sizes and collection periods. Until then, the methodology and coverage pages describe exactly what we're collecting and how.</p>
+      <div style="margin-top:20px">
+        <a class="vs-labslink" href="/data/methodology">
+          Read the methodology
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="vs-block vs-rise">
+    <h2>What this leaderboard is not</h2>
+    <ul>
+      <li><b>Not a benchmark.</b> Benchmarks test models on curated tasks with known answers. This leaderboard tests models on messy, real-world questions with no ground truth — judged entirely by the person who asked.</li>
+      <li><b>Not position-balanced.</b> The user's original model always appears first. This gives it a position advantage. We measure and report the effect, but we don't correct for it in the headline number. Buyers who need position-balanced rates can request a dedicated panel.</li>
+      <li><b>Not static.</b> Rankings update as the dataset grows. A model that leads today may fall behind when a competitor ships an update. The longitudinal view — how rankings shift over time — is available through the data product.</li>
+    </ul>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Contribute to the rankings</h2>
+    <p>Every comparison you make through Verso feeds the leaderboard. Install the extension, use your preferred AI assistant normally, and your preferences help build the most honest model evaluation on the internet.</p>
+    <p style="margin-top:26px">
+      <a class="vs-btn" href="https://chromewebstore.google.com/detail/verso/celmibcnighdegjjcipimmdkjikhkdjm">
+        Add to Chrome — free
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 12L12 1M12 1H4M12 1v8" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/', label: 'Extension' },
+  { href: '/data', label: 'Data' },
+  { href: '/what-we-collect', label: 'What we collect' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>
