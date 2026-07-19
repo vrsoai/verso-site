@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import facts from '../content/facts';
+
+const contactMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Check%20—%20early%20access';
+---
+
+<Layout
+  title="Verso Check — Is your brand visible in AI answers?"
+  description="Enter your brand name and see how AI models mention you. Check your visibility across models, query types, and versions."
+  ogTitle="Verso Check"
+  ogDescription="Enter your brand. See what models say about you."
+  noindex
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Check</span>
+  <h1 class="vs-rise">Enter your brand. <u>See what models say.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Verso Check is a self-service tool that lets you see how AI models talk about your
+    brand. Enter a brand name, pick a vertical, and see mention rates, positioning, and
+    framing across every model in the dataset — without a sales call.
+  </p>
+
+  {facts.checkToolEnabled ? (
+    <section class="vs-block vs-rise">
+      {/* Tool UI will be rendered here when the backend is ready */}
+    </section>
+  ) : (
+    <section class="vs-block vs-rise">
+      <h2>Coming soon</h2>
+      <p>Verso Check is in development. The tool requires a critical mass of brand-mention data across enough models and verticals to produce useful results. Publishing a tool that returns sparse or unreliable data would be worse than publishing nothing.</p>
+      <p>When the dataset reaches sufficient density, Check will let you:</p>
+      <ul>
+        <li><b>Search by brand.</b> Enter a brand name and see how often each model mentions it in relevant queries, in what position, and with what framing.</li>
+        <li><b>Compare across models.</b> See whether GPT recommends your brand more or less often than Claude, Gemini, or others — on the same queries.</li>
+        <li><b>Track over time.</b> See how your brand's visibility changed across model versions. Did a model update help or hurt?</li>
+        <li><b>See the competitive set.</b> Which brands appear alongside yours, which appear instead of yours, and how that varies by model.</li>
+      </ul>
+      <p style="margin-top:26px">
+        <a class="vs-btn" href={contactMailto}>
+          Request early access
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </a>
+      </p>
+    </section>
+  )}
+
+  <section class="vs-block vs-rise">
+    <h2>How the data behind Check works</h2>
+    <p>Check draws on the same paired-comparison dataset that powers all Verso data products. When a user asks an AI model a question that mentions a product category, we record which brands each model names in its response. Check aggregates those mentions per brand, per model, per vertical — and makes the result queryable. The data comes from organic prompts, not test queries, so the mention rates reflect real user demand.</p>
+    <a class="vs-labslink" href="/data/methodology">
+      Read the full methodology
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Check vs. the full data product</h2>
+    <p>Check gives you a snapshot — your brand's current visibility across models. The full data product gives you the time series, the competitive landscape, the query taxonomy, and the raw preference signal. If Check tells you something interesting, the data product tells you why.</p>
+    <a class="vs-labslink" href="/data/brands">
+      See the full brand visibility product
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/brands', label: 'Brand data' },
+  { href: '/', label: 'Extension' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

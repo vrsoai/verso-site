@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import facts from '../../content/facts';
+
+// GATED — correction #8: page stays draft if operational numbers are null
+const hasOperationalData = facts.historyDepth !== null
+  && facts.dailyCapacity !== null
+  && facts.investorLatency !== null;
+
+const contactMailto = 'mailto:contact@tryverso.ai?subject=Verso%20Data%20—%20investor%20inquiry';
+---
+
+<Layout
+  title="Verso Data for Investors — AI preference as a time series"
+  description="Track which AI models are winning, which are losing, and where the market is shifting — measured from real user preference, not announcements."
+  ogTitle="Verso Data for Investors"
+  ogDescription="Which model is winning? Measured by the people who use them."
+  noindex={!hasOperationalData}
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">For investors &amp; analysts</span>
+  <h1 class="vs-rise">Model announcements tell you what shipped. <u>Preference tells you what worked.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Every AI lab claims their latest model is the best. Verso measures whether users agree.
+    Paired comparisons from real workflows produce a preference signal that tracks which
+    models are actually winning — and the time series shows when that changes.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>What you get</h2>
+    <div class="vs-two">
+      <div>
+        <h3>Preference time series</h3>
+        <p>Model A's win rate against Model B, week over week. When a new model version ships, you see the preference shift in real time — not in a press release, not in a benchmark that tests the wrong distribution, but in the choices of people doing real work.</p>
+      </div>
+      <div>
+        <h3>Vertical breakdowns</h3>
+        <p>Aggregate preference hides the story. A model can gain share in code while losing it in travel. The vertical breakdown shows you where each model is strong, where it's weak, and where the competitive dynamics are changing.</p>
+      </div>
+      <div>
+        <h3>Brand-mention trends</h3>
+        <p>Which brands are models recommending more often this quarter than last? Which are they recommending less? Brand visibility in AI responses is a leading indicator of a shift that SEO teams, e-commerce platforms, and consumer companies are only beginning to measure.</p>
+      </div>
+      <div>
+        <h3>Market-share proxy</h3>
+        <p>Verso sees which AI platforms users are on (ChatGPT, Claude, Gemini, Perplexity) and how that distribution shifts over time. Combined with preference data, this gives you both the installed base and the quality signal — the closest thing to AI market share that exists outside the labs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Why preference data matters for investment</h2>
+    <p>Benchmarks are published by the companies whose models they evaluate. Usage metrics are proprietary. Revenue is disclosed quarterly, if at all. Preference — measured independently, from real workflows, on the actual distribution of user questions — is the signal that none of the labs control. When Model A starts losing to Model B on code questions, that shows up in Verso's data before it shows up anywhere else.</p>
+  </section>
+
+  {hasOperationalData && (
+    <section class="vs-block vs-rise">
+      <h2>Operational numbers</h2>
+      <table class="vs-table">
+        <tbody>
+          <tr>
+            <td><b>History depth</b></td>
+            <td>{facts.historyDepth}</td>
+          </tr>
+          <tr>
+            <td><b>Daily collection capacity</b></td>
+            <td>{facts.dailyCapacity?.toLocaleString()} paired comparisons</td>
+          </tr>
+          <tr>
+            <td><b>Data latency</b></td>
+            <td>{facts.investorLatency}</td>
+          </tr>
+          {facts.modelsCompared && (
+            <tr>
+              <td><b>Models compared</b></td>
+              <td>{facts.modelsCompared}</td>
+            </tr>
+          )}
+          {facts.activeVerticals && (
+            <tr>
+              <td><b>Active verticals</b></td>
+              <td>{facts.activeVerticals}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </section>
+  )}
+
+  <section class="vs-block vs-rise">
+    <h2>Data integrity</h2>
+    <p>The methodology is published and the limitations are stated. Verso's paired-comparison design controls for prompt variance. It does not control for self-selection (Verso users are power users), position bias (the original model appears first), or brand loyalty (users can see which models are compared). These limitations are documented, reported alongside every deliverable, and quantified where sample size permits.</p>
+    <a class="vs-labslink" href="/data/methodology">
+      Read the full methodology
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </a>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={contactMailto}>
+        Request an investor briefing
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>

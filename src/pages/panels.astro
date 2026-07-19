@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import facts from '../content/facts';
+
+const contactMailto = 'mailto:contact@tryverso.ai?subject=Verso%20—%20sponsored%20panel%20inquiry';
+---
+
+<Layout
+  title="Verso Panels — Targeted preference data for your vertical"
+  description="Commission a sponsored panel to build preference and brand-visibility data in a specific vertical, language, or model pair. Depth where you need it."
+  ogTitle="Verso Panels"
+  ogDescription="Organic coverage isn't enough? We recruit for your vertical."
+  includeScrollReveal
+>
+
+<Nav variant="data" />
+
+<main class="vs-wrap vs-page">
+
+  <span class="vs-mono">Sponsored panels</span>
+  <h1 class="vs-rise">Depth where you need it, <u>not where it happened.</u></h1>
+  <p class="vs-page-lede vs-rise">
+    Organic data is distributed unevenly. Code questions dominate. Travel is seasonal.
+    Niche verticals barely appear. If the cell you care about is thin — or missing entirely —
+    a sponsored panel builds it. Consenting users, your category, your timeline.
+  </p>
+
+  <section class="vs-block vs-rise">
+    <h2>How a panel works</h2>
+    <div class="vs-two">
+      <div>
+        <h3>1. Define the target</h3>
+        <p>You specify the vertical, language, and optionally the model pairs you care about. "Product recommendations in French, GPT vs. Claude" is a valid target. So is "travel queries about Southeast Asia across all supported models."</p>
+      </div>
+      <div>
+        <h3>2. We recruit</h3>
+        <p>We recruit consenting Verso users whose usage patterns match the target vertical. Recruitment is organic — we surface the panel opportunity to users who are already asking relevant questions, not to paid annotators following a script.</p>
+      </div>
+      <div>
+        <h3>3. Data accumulates</h3>
+        <p>Panel users continue using AI assistants naturally. Their prompts, both model answers, and their preferences are collected through the same paired-comparison pipeline as organic data. The only difference is that the panel concentrates collection in your vertical.</p>
+      </div>
+      <div>
+        <h3>4. You receive the signal</h3>
+        <p>When the panel reaches sufficient depth — enough distinct prompts to support the metrics you commissioned — we deliver. Preference rates, brand visibility, taxonomy, drift — whatever the engagement specifies.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>What makes panels different from synthetic evaluation</h2>
+    <p>A synthetic evaluation set is a list of prompts someone wrote. A panel is a population of real users asking real questions. The prompts are organic — messy, context-dependent, and distributed the way actual demand is distributed. The preferences are revealed — the user picks the answer they'll actually use, not the one they think an annotator should pick. The result is data that reflects what real users do, not what a prompt engineer imagined they'd do.</p>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Panel design constraints</h2>
+    <ul>
+      <li><b>Minimum viable panel.</b> A panel needs enough distinct prompts per cell to produce stable rates. For most verticals, this means several hundred paired comparisons. We estimate the required panel duration before the engagement starts and commit to a deliverable threshold.</li>
+      <li><b>No fabrication.</b> Panel users are real people with real questions. We do not incentivize specific prompts, suggest questions, or script usage. The panel concentrates collection — it does not direct it.</li>
+      <li><b>Consent.</b> Panel participants opt in explicitly. They know their usage in the target vertical is being collected for a specific buyer. This is disclosed before participation begins.</li>
+      <li><b>Exclusivity is optional.</b> By default, panel data feeds the general dataset as well. If you need exclusivity — data that only you receive — that's available as a panel option.</li>
+    </ul>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <h2>Use cases</h2>
+    <div class="vs-two">
+      <div>
+        <h3>AI labs</h3>
+        <p>You need preference rates on a vertical that's thin in organic coverage — legal, medical, finance. A panel builds the evaluation set you can't synthesize.</p>
+      </div>
+      <div>
+        <h3>GEO platforms</h3>
+        <p>Your client's vertical is niche. Organic brand-visibility data doesn't have enough observations. A panel gives you the density to report stable mention rates and competitive positioning.</p>
+      </div>
+      <div>
+        <h3>Brands</h3>
+        <p>You want to track your visibility in a specific product category across models. A panel recruits users who are actively shopping in your category and measures how models recommend — or don't recommend — your brand.</p>
+      </div>
+      <div>
+        <h3>Travel</h3>
+        <p>You need destination-specific data. A panel targets travelers planning trips to your destinations and builds the property-mention and preference data you need at the geographic granularity that matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-block vs-rise">
+    <p>
+      <a class="vs-btn" href={contactMailto}>
+        Inquire about a panel
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7.5 2l4.5 4.5L7.5 11" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<Footer links={[
+  { href: '/data', label: 'Data' },
+  { href: '/data/methodology', label: 'Methodology' },
+  { href: '/data/coverage', label: 'Coverage' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:contact@tryverso.ai', label: 'Contact' },
+]} />
+
+</Layout>
