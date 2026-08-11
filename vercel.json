@@ -1,6 +1,0 @@
-{
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/labs", "destination": "/data", "permanent": true }
-  ]
-}

@@ -1,33 +1,71 @@
-# tryverso.ai
+<p align="center">
+  <img src="src/assets/verso-logo.png" alt="Verso AI" width="120" />
+</p>
 
-Landing site for Verso — the Chrome extension that shows you a second model's
-answer to the question you just asked.
+<h1 align="center">Verso AI</h1>
 
-Static HTML. No build step.
+<p align="center">
+  <strong>The Chrome extension that gives you a second opinion from another LLM.</strong>
+</p>
+
+<p align="center">
+  <a href="https://tryverso.ai">🌐 Live site</a> •
+  <a href="https://tryverso.ai">📋 Join the waitlist</a>
+</p>
+
+---
+
+## About
+
+This repo contains the landing page and waitlist for **Verso AI** — a Chrome extension that lets you double-check any AI response by getting a second answer from a different LLM, for free.
+
+## Tech Stack
+
+| Technology | Usage |
+|------------|-------|
+| [React](https://react.dev) | UI |
+| [TypeScript](https://typescriptlang.org) | Type safety |
+| [Vite](https://vitejs.dev) | Build & dev server |
+| [Tailwind CSS](https://tailwindcss.com) | Styling |
+| [shadcn/ui](https://ui.shadcn.com) | UI components |
+| [Supabase](https://supabase.com) | Backend (waitlist, auth) |
+
+## Development
 
 ```bash
-python3 -m http.server 8000
+# Clone the repo
+git clone <YOUR_GIT_URL>
+cd verso-website
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
 ```
 
-| Page | Job |
-|---|---|
-| `index.html` | Convert a visitor into an install. Only job. |
-| `labs.html` | Credibility artefact for labs and GEO buyers. Sent as a link after a call, not an acquisition channel. `noindex`. |
-| `privacy.html` | **Skeleton.** Must be real before launch. |
+## Project Structure
 
-Read `DESIGN.md` before changing anything visual, and `CLAUDE.md` before pointing
-an agent at the repo.
+```
+src/
+├── components/
+│   ├── landing/          # Landing page sections
+│   │   ├── Hero.tsx
+│   │   ├── Nav.tsx
+│   │   └── WhySection.tsx
+│   ├── ui/               # shadcn/ui components
+│   └── WaitingListForm.tsx
+├── hooks/                # Custom hooks
+├── integrations/         # Supabase client
+├── lib/                  # Utilities
+├── pages/
+│   ├── Index.tsx         # Home page
+│   └── NotFound.tsx      # 404 page
+├── App.tsx               # Routes
+├── main.tsx              # Entry point
+└── index.css             # Global styles
+```
 
-## Deploy
+## License
 
-Any static host. Vercel, Netlify, Cloudflare Pages — point it at the repo root,
-no build command, no output directory.
-
-## Before launch
-
-- [ ] Self-host the three typefaces (`@fontsource`), drop the Google CDN link
-- [ ] Replace the model chips in `#models` with the models actually supported
-- [ ] Step 02 copy: only claim the proactive trigger once it ships
-- [ ] Write `privacy.html` for real, reviewed by counsel
-- [ ] Fill the coverage table in `labs.html` from the audit pipeline, or cut it
-- [ ] Check the sheet turn on a mid-range Android; if the grain janks, swap for a PNG
+Proprietary — Verso AI © 2025
