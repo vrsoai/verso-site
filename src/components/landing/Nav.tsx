@@ -57,7 +57,7 @@ export const Nav = ({ activeLink }: NavProps) => {
             Methodology
           </Link>
           <a
-            className="btn btn-dark btn-sm"
+            className="btn btn-lime btn-sm"
             href={activeLink ? "/#cta" : "#cta"}
             onClick={() => setOpen(false)}
           >
