@@ -23,20 +23,13 @@ export const Nav = ({ activeLink }: NavProps) => {
       <header className={open ? "menu-open" : ""}>
         <div className="container nav">
           <Wordmark />
-          <nav className={`nav-links${open ? " open" : ""}`}>
-            <a href={activeLink ? "/#index" : "#index"} onClick={() => setOpen(false)}>The Index</a>
-            <a href={activeLink ? "/#build" : "#build"} onClick={() => setOpen(false)}>Build mode</a>
-            <a href={activeLink ? "/#reports" : "#reports"} onClick={() => setOpen(false)}>Reports</a>
-            <Link to="/methodology" className={activeLink === "methodology" ? "on" : ""} onClick={() => setOpen(false)}>
+          <nav className="nav-links nav-desktop">
+            <a href={activeLink ? "/#index" : "#index"}>The Index</a>
+            <a href={activeLink ? "/#build" : "#build"}>Build mode</a>
+            <a href={activeLink ? "/#reports" : "#reports"}>Reports</a>
+            <Link to="/methodology" className={activeLink === "methodology" ? "on" : ""}>
               Methodology
             </Link>
-            <a
-              className="btn btn-dark btn-sm mobile-cta"
-              href={activeLink ? "/#cta" : "#cta"}
-              onClick={() => setOpen(false)}
-            >
-              Book a demo
-            </a>
           </nav>
           <div className="nav-cta desktop-cta">
             <a className="btn btn-dark btn-sm" href={activeLink ? "/#cta" : "#cta"}>
@@ -54,7 +47,24 @@ export const Nav = ({ activeLink }: NavProps) => {
           </button>
         </div>
       </header>
-      {open && <div className="nav-overlay" onClick={() => setOpen(false)} />}
+
+      {open && (
+        <div className="mobile-menu">
+          <a href={activeLink ? "/#index" : "#index"} onClick={() => setOpen(false)}>The Index</a>
+          <a href={activeLink ? "/#build" : "#build"} onClick={() => setOpen(false)}>Build mode</a>
+          <a href={activeLink ? "/#reports" : "#reports"} onClick={() => setOpen(false)}>Reports</a>
+          <Link to="/methodology" className={activeLink === "methodology" ? "on" : ""} onClick={() => setOpen(false)}>
+            Methodology
+          </Link>
+          <a
+            className="btn btn-dark btn-sm"
+            href={activeLink ? "/#cta" : "#cta"}
+            onClick={() => setOpen(false)}
+          >
+            Book a demo
+          </a>
+        </div>
+      )}
     </>
   );
 };
