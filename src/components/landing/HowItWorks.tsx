@@ -11,9 +11,9 @@ export const HowItWorks = () => {
             <div className="snum">01</div>
             <h3>Partner apps</h3>
             <p>
-              Users of partner applications opt in to share their ChatGPT
-              history. Every connection is explicit, revocable, and
-              consent-based.
+              Users of partner applications opt in to share their LLM
+              conversation history. Every connection is explicit, revocable,
+              and consent-based.
             </p>
           </div>
           <div className="how-step">
@@ -21,8 +21,8 @@ export const HowItWorks = () => {
             <h3>Normalize</h3>
             <p>
               Conversations are anonymized, stripped of PII, and structured into
-              a consistent schema. ChatGPT's DAG format becomes clean, linear
-              message lists.
+              a consistent schema. Proprietary formats become clean, linear
+              message lists — unified across providers.
             </p>
           </div>
           <div className="how-step">

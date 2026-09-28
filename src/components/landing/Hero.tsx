@@ -9,8 +9,8 @@ export const Hero = () => {
             <em className="u">and&nbsp;AI.</em>
           </h1>
           <p className="sub">
-            Verso collects and delivers raw, anonymized ChatGPT conversation
-            data. <b>Consent-based</b>. <b>GDPR-ready</b>. Updated daily.
+            Verso collects and delivers raw, anonymized LLM conversation
+            data — across ChatGPT, Claude, Gemini, and more. <b>Consent-based</b>. <b>GDPR-ready</b>. Updated daily.
           </p>
           <a className="btn btn-blue" href="mailto:hello@tryverso.ai">
             Book a demo
@@ -43,6 +43,7 @@ export const Hero = () => {
       "timestamp": "2026-09-27T14:23:18Z"
     }
   ],
+  "provider": "openai",
   "model": "gpt-4o",
   "create_time": "2026-09-27T14:23:11Z"
 }`}</pre>

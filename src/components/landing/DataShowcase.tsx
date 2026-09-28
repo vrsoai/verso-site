@@ -57,6 +57,10 @@ export const DataShowcase = () => {
               <span className="str">"gpt-4o"</span>,
             </span>
             <span className="ln">
+              {"    "}<span className="prop">"provider"</span>:{" "}
+              <span className="str">"openai"</span>,
+            </span>
+            <span className="ln">
               {"    "}<span className="prop">"turn"</span>:{" "}
               <span className="fn">1</span>,
             </span>
