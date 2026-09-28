@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Wordmark } from "./Wordmark";
 
-interface NavProps {
-  activeLink?: string;
-}
-
-export const Nav = ({ activeLink }: NavProps) => {
+export const Nav = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,25 +9,20 @@ export const Nav = ({ activeLink }: NavProps) => {
       <div className="container nav">
         <Wordmark />
         <nav className={`nav-links${open ? " open" : ""}`}>
-          <a href={activeLink ? "/#index" : "#index"} onClick={() => setOpen(false)}>The Index</a>
-          <a href={activeLink ? "/#build" : "#build"} onClick={() => setOpen(false)}>Build mode</a>
-          <a href={activeLink ? "/#reports" : "#reports"} onClick={() => setOpen(false)}>Reports</a>
-          <Link to="/methodology" className={activeLink === "methodology" ? "on" : ""} onClick={() => setOpen(false)}>
-            Methodology
-          </Link>
-          <Link to="/developers" className={activeLink === "developers" ? "on" : ""} onClick={() => setOpen(false)}>
-            Developers
-          </Link>
+          <a href="#use-cases" onClick={() => setOpen(false)}>Use cases</a>
+          <a href="#how-it-works" onClick={() => setOpen(false)}>How it works</a>
+          <a href="#trust" onClick={() => setOpen(false)}>Trust</a>
+          <a href="https://docs.tryverso.ai" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Docs</a>
           <a
             className="btn btn-dark btn-sm mobile-cta"
-            href={activeLink ? "/#cta" : "#cta"}
+            href="mailto:hello@tryverso.ai"
             onClick={() => setOpen(false)}
           >
             Book a demo
           </a>
         </nav>
         <div className="nav-cta desktop-cta">
-          <a className="btn btn-dark btn-sm" href={activeLink ? "/#cta" : "#cta"}>
+          <a className="btn btn-dark btn-sm" href="mailto:hello@tryverso.ai">
             Book a demo
           </a>
         </div>

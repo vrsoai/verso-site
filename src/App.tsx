@@ -10,8 +10,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
-import Methodology from "./pages/Methodology";
-import Developers from "./pages/Developers";
 import NotFound from "./pages/NotFound";
 
 
@@ -26,8 +24,6 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/methodology" element={<Methodology />} />
-          <Route path="/developers" element={<Developers />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/cookies" element={<CookiePolicy />} />

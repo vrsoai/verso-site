@@ -1,27 +1,21 @@
-import { Ticker } from "@/components/landing/Ticker";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
-import { CoverageBar } from "@/components/landing/CoverageBar";
-import { BuildMode } from "@/components/landing/BuildMode";
-import { AgentIndex } from "@/components/landing/AgentIndex";
+import { DataShowcase } from "@/components/landing/DataShowcase";
+import { UseCases } from "@/components/landing/UseCases";
 import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Reports } from "@/components/landing/Reports";
-import { MethodologyStrip } from "@/components/landing/MethodologyStrip";
+import { Trust } from "@/components/landing/Trust";
 import { CtaSection } from "@/components/landing/CtaSection";
 import { Footer } from "@/components/landing/Footer";
 
 const Index = () => {
   return (
     <>
-      <Ticker />
       <Nav />
       <Hero />
-      <CoverageBar />
-      <BuildMode />
-      <AgentIndex />
+      <DataShowcase />
+      <UseCases />
       <HowItWorks />
-      <Reports />
-      <MethodologyStrip />
+      <Trust />
       <CtaSection />
       <Footer />
     </>

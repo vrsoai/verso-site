@@ -1,34 +1,36 @@
 export const HowItWorks = () => {
   return (
-    <section id="how" style={{ paddingTop: 0 }}>
-      <div className="container">
+    <section id="how-it-works">
+      <div className="narrow">
         <div className="eyebrow">How it works</div>
         <h2>
-          Real prompts. Real builds. <em>Real choices.</em>
+          Consent-first collection <em>at scale.</em>
         </h2>
-        <div className="steps">
-          <div className="step">
-            <div className="num">STEP 01</div>
-            <h3>Run the prompts developers actually write</h3>
+        <div className="how-steps">
+          <div className="how-step">
+            <div className="snum">01</div>
+            <h3>Partner apps</h3>
             <p>
-              Natural questions like <code>"add subscription billing"</code> or{" "}
-              <code>"set up semantic search"</code>, not keyword lists.
+              Users of partner applications opt in to share their ChatGPT
+              history. Every connection is explicit, revocable, and
+              consent-based.
             </p>
           </div>
-          <div className="step">
-            <div className="num">STEP 02</div>
-            <h3>Let the agents build, repeatedly</h3>
+          <div className="how-step">
+            <div className="snum">02</div>
+            <h3>Normalize</h3>
             <p>
-              Each prompt runs N times per agent, per model, in pinned sandboxes. Answer mode
-              captures recommendations; build mode captures installs.
+              Conversations are anonymized, stripped of PII, and structured into
+              a consistent schema. ChatGPT's DAG format becomes clean, linear
+              message lists.
             </p>
           </div>
-          <div className="step">
-            <div className="num">STEP 03</div>
-            <h3>Read your share, and the why</h3>
+          <div className="how-step">
+            <div className="snum">03</div>
+            <h3>Deliver</h3>
             <p>
-              Install &amp; mention share vs. every competitor, plus the run transcripts showing
-              how agents justify each choice.
+              Fresh data delivered daily via API, bulk export, or cloud storage
+              (S3/GCS). Your format, your cadence.
             </p>
           </div>
         </div>

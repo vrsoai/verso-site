@@ -4,18 +4,19 @@ export const Footer = () => {
   return (
     <footer>
       <div className="container foot">
-        <Link className="wordmark" to="/">
+        <a className="wordmark" href="#">
           ver<span className="slash"></span>so
-        </Link>
+        </a>
         <nav>
-          <a href="/#index">Index</a>
-          <Link to="/methodology">Methodology</Link>
-          <Link to="/developers">Developers</Link>
-          <a href="mailto:hello@tryverso.ai">Data partnerships</a>
-          <a href="mailto:hello@tryverso.ai">Company</a>
+          <a href="#use-cases">Use cases</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#trust">Trust</a>
+          <a href="https://docs.tryverso.ai" target="_blank" rel="noopener noreferrer">Docs</a>
+          <a href="mailto:hello@tryverso.ai">Contact</a>
           <Link to="/privacy">Privacy</Link>
+          <Link to="/terms">Terms</Link>
         </nav>
-        <div className="fine">&copy; {new Date().getFullYear()} Verso &middot; Agent recommendation intelligence</div>
+        <div className="fine">&copy; {new Date().getFullYear()} Verso &middot; Conversation intelligence</div>
       </div>
     </footer>
   );
