@@ -9,9 +9,9 @@ const PrivacyPolicy = () => {
         <div className="container">
           <article className="prose">
             <h1>Privacy Policy</h1>
-            <p><small>Effective Date: February 15, 2026 &middot; Last Updated: February 15, 2026</small></p>
+            <p><small>Effective Date: February 15, 2026 &middot; Last Updated: September 29, 2026</small></p>
 
-            <p>Verso Solutions, Inc. ("Verso," "we," "us," or "our") respects your privacy and is committed to protecting your information. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use our website, web application, Chrome browser extension, and any related products, services, or integrations (collectively, the "Service").</p>
+            <p>Verso Solutions, Inc. ("Verso," "we," "us," or "our") respects your privacy and is committed to protecting your information. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use our website, web application, Chrome browser extension, the hosted pages through which you connect an AI assistant account from a partner application, our partner API, and any related products, services, or integrations (collectively, the "Service").</p>
             <p>By accessing or using the Service, you agree to this Privacy Policy.</p>
 
             <h2>1. Information We Collect</h2>
@@ -27,6 +27,9 @@ const PrivacyPolicy = () => {
             <h3>C. Information from Third Parties</h3>
             <p>We may receive information from authentication providers (e.g., Google OAuth), analytics providers, integration partners, and payment processors. Such information is subject to the privacy policies of those third parties.</p>
 
+            <h3>D. Connected AI Assistant Accounts</h3>
+            <p>When you connect an AI assistant account (for example, a ChatGPT account) to a partner application through our hosted connect page, we collect: the session credential needed to read that account, which we store encrypted and use only to retrieve your conversations; the conversation history of that account, including titles, messages, timestamps, attachments, and related metadata; identifiers of that account (an account identifier and a hashed email address) used to recognize the same account across connections; and the identifier the partner application uses to refer to you. We collect this data only after you start the connection from the partner application, and we keep it in sync until the connection is deleted.</p>
+
             <h2>2. How We Use Information</h2>
             <p>We use collected information to:</p>
             <ul>
@@ -41,6 +44,7 @@ const PrivacyPolicy = () => {
               <li>Comply with legal obligations</li>
             </ul>
             <p>We may use anonymized and aggregated data for analytics, research, and product improvement.</p>
+            <p>Conversation data collected from a connected AI assistant account is used to provide that data to the partner application through which you connected, to keep it in sync, and to develop Verso's data products as described in Section 3.E.</p>
 
             <h2>3. How We Share Information</h2>
             <p>We do not sell your personal information.</p>
@@ -57,12 +61,16 @@ const PrivacyPolicy = () => {
             <h3>D. Business Transfers</h3>
             <p>If Verso is involved in a merger, acquisition, financing, or sale of assets, your information may be transferred as part of that transaction.</p>
 
+            <h3>E. Partner Applications and Data Customers</h3>
+            <p>If you connected an AI assistant account through a partner application, we share the conversation data of that account with that partner application. We may also make conversation data available to our data customers, in accordance with the consent you gave to the partner application and the terms presented to you there. The partner application is responsible for informing you of this use before you connect.</p>
+
             <h2>4. Chrome Extension Data Practices</h2>
             <p>Our Chrome extension collects only the data necessary to provide its functionality. It does not collect passwords, payment information, or sensitive form data unless explicitly disclosed.</p>
 
             <h2>5. Data Retention</h2>
             <p>We retain information as long as your account is active, as necessary to provide the Service, as required by law, and as needed to resolve disputes or enforce agreements.</p>
             <p>You may request deletion of your account by contacting us at <a href="mailto:contact@tryverso.ai">contact@tryverso.ai</a>.</p>
+            <p>Conversation data from a connected AI assistant account is kept until you delete it from the manage page offered by the partner application, until the partner application deletes it on your behalf, or until we terminate the connection. Deletion is immediate and irreversible: the conversations and attachments are erased and the encryption key protecting the session credential is destroyed.</p>
 
             <h2>6. Security</h2>
             <p>We implement reasonable administrative, technical, and organizational safeguards designed to protect your information. However, no system is 100% secure. We cannot guarantee absolute security.</p>
