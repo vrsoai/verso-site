@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Wordmark } from "./Wordmark";
+import { BookDemoButton } from "./BookDemoButton";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -13,18 +14,14 @@ export const Nav = () => {
           <a href="#how-it-works" onClick={() => setOpen(false)}>How it works</a>
           <a href="#trust" onClick={() => setOpen(false)}>Trust</a>
           <a href="https://docs.tryverso.ai" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Docs</a>
-          <a
+          <BookDemoButton
+            source="nav-mobile"
             className="btn btn-dark btn-sm mobile-cta"
-            href="mailto:hello@tryverso.ai"
             onClick={() => setOpen(false)}
-          >
-            Book a demo
-          </a>
+          />
         </nav>
         <div className="nav-cta desktop-cta">
-          <a className="btn btn-dark btn-sm" href="mailto:hello@tryverso.ai">
-            Book a demo
-          </a>
+          <BookDemoButton source="nav" className="btn btn-dark btn-sm" />
         </div>
         <button
           className={`burger${open ? " active" : ""}`}

@@ -1,3 +1,5 @@
+import { BookDemoButton } from "./BookDemoButton";
+
 export const Hero = () => {
   return (
     <section className="hero">
@@ -12,9 +14,7 @@ export const Hero = () => {
             Verso collects and delivers raw, anonymized LLM conversation
             data — across ChatGPT, Claude, Gemini, and more. <b>Consent-based</b>. <b>GDPR-ready</b>. Updated daily.
           </p>
-          <a className="btn btn-blue" href="mailto:hello@tryverso.ai">
-            Book a demo
-          </a>
+          <BookDemoButton source="hero" className="btn btn-blue" />
         </div>
 
         <div className="mock">

@@ -1,3 +1,5 @@
+import { BookDemoButton } from "./BookDemoButton";
+
 export const CtaSection = () => {
   return (
     <section className="dark-section cta" id="cta">
@@ -14,9 +16,7 @@ export const CtaSection = () => {
           delivery options, and compliance framework.
         </p>
         <div style={{ marginTop: 36 }}>
-          <a className="btn btn-lime" href="mailto:hello@tryverso.ai">
-            Book a demo
-          </a>
+          <BookDemoButton source="cta" className="btn btn-lime" />
         </div>
       </div>
     </section>
