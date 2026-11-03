@@ -5,7 +5,7 @@ import { useTurnstile } from "@/hooks/use-turnstile";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-type Done = { kind: "existing" } | { kind: "created"; pageUrl: string; connectUrl: string };
+type Done = { kind: "existing"; emailSent: boolean } | { kind: "created"; pageUrl: string; connectUrl: string };
 
 /** Email + consent, then straight to ChatGPT sign-in. Known emails get their link by email. */
 export function SignupForm({ via }: { via: string | null }) {
@@ -29,7 +29,7 @@ export function SignupForm({ via }: { via: string | null }) {
       const res = await startBreakdown({ email: value, consent: true, via, timezone: browserTimezone(), turnstileToken: turnstile.token });
       if (res.status === "existing") {
         track("breakdown_start", { result: "existing" });
-        setDone({ kind: "existing" });
+        setDone({ kind: "existing", emailSent: res.emailSent !== false });
         return;
       }
       track("breakdown_start", { result: "created", via: via ?? "" });
@@ -51,10 +51,21 @@ export function SignupForm({ via }: { via: string | null }) {
   if (done?.kind === "existing") {
     return (
       <div className="bd-card bd-form-done">
-        <h3>Check your inbox</h3>
-        <p className="bd-muted">
-          This email already has a breakdown. We've sent the link to <b>{email.trim().toLowerCase()}</b> (also look in spam). Didn't get it after 10 minutes? Submit again.
-        </p>
+        {done.emailSent ? (
+          <>
+            <h3>Check your inbox</h3>
+            <p className="bd-muted">
+              This email already has a breakdown. We've sent the link to <b>{email.trim().toLowerCase()}</b> (also look in spam). Didn't get it after 10 minutes? Submit again.
+            </p>
+          </>
+        ) : (
+          <>
+            <h3>We couldn't send your link right now</h3>
+            <p className="bd-muted">
+              This email already has a breakdown, but the email could not be sent just now. Please submit again in a few minutes; nothing else is needed on your side.
+            </p>
+          </>
+        )}
       </div>
     );
   }
