@@ -11,6 +11,12 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
+import { Suspense, lazy } from "react";
+
+const BreakdownLanding = lazy(() => import("./pages/breakdown/BreakdownLanding"));
+const BreakdownToken = lazy(() => import("./pages/breakdown/BreakdownToken"));
+const BreakdownMe = lazy(() => import("./pages/breakdown/BreakdownMe"));
+const Blank = () => <div style={{ minHeight: "100vh", background: "var(--bg)" }} />;
 
 
 const queryClient = new QueryClient();
@@ -29,6 +35,9 @@ const App = () => (
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="/breakdown" element={<Suspense fallback={<Blank />}><BreakdownLanding /></Suspense>} />
+          <Route path="/breakdown/me" element={<Suspense fallback={<Blank />}><BreakdownMe /></Suspense>} />
+          <Route path="/breakdown/:token" element={<Suspense fallback={<Blank />}><BreakdownToken /></Suspense>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
