@@ -66,6 +66,9 @@ export function SignupForm({ via }: { via: string | null }) {
             </p>
           </>
         )}
+        <div className="bd-actions">
+          <button type="button" className="btn btn-dark" onClick={() => { setDone(null); turnstile.reset(); }}>Back to the form</button>
+        </div>
       </div>
     );
   }

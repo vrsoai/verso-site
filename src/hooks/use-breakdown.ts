@@ -21,6 +21,9 @@ export function useBreakdownData(token: string | null) {
     enabled: !!token,
     refetchInterval: (query) => {
       const stage = query.state.data?.stage;
+      // Back from the ChatGPT sign-in the connection can take a few seconds
+      // to show up: keep looking, slowly, while nothing is connected.
+      if (stage === "no_connection") return 10_000;
       return stage && ACTIVE.includes(stage) ? 6000 : false;
     },
     retry: retryUnlessUnauthorized,

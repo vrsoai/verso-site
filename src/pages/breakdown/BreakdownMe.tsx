@@ -38,6 +38,16 @@ export default function BreakdownMe() {
     if (unauthorized) clearToken();
   }, [unauthorized]);
 
+  // Back from the ChatGPT sign-in, phones restore this page as it was left:
+  // the connect button must be usable again.
+  useEffect(() => {
+    const onShow = (e: PageTransitionEvent) => {
+      if (e.persisted) setConnecting(false);
+    };
+    window.addEventListener("pageshow", onShow);
+    return () => window.removeEventListener("pageshow", onShow);
+  }, []);
+
   async function connect() {
     if (!token) return;
     setConnecting(true);
@@ -111,11 +121,20 @@ export default function BreakdownMe() {
       {s.stage !== "no_connection" && !showReport ? (
         <section className="bd-section">
           <div className="bd-card">
-            <p className="bd-muted">
-              {breakdown.isPending || breakdown.isFetching
-                ? "Computing your first numbers…"
-                : "No conversations imported yet. This page refreshes on its own as the import progresses."}
-            </p>
+            {breakdown.isError && !breakdown.isFetching ? (
+              <>
+                <p className="bd-muted">We couldn't compute your numbers just now. Your import is not affected.</p>
+                <div className="bd-actions">
+                  <button type="button" className="btn btn-blue" onClick={() => breakdown.refetch()}>Retry</button>
+                </div>
+              </>
+            ) : (
+              <p className="bd-muted">
+                {breakdown.isPending || breakdown.isFetching
+                  ? "Computing your first numbers…"
+                  : "No conversations imported yet. This page refreshes on its own as the import progresses."}
+              </p>
+            )}
           </div>
         </section>
       ) : null}

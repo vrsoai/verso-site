@@ -9,7 +9,11 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-R7MSMZBGXN');
+      // Personal breakdown links carry a private token in the path: analytics
+      // only ever gets the generic address of that page.
+      gtag('config', 'G-R7MSMZBGXN', location.pathname.indexOf('/breakdown/') === 0
+        ? { page_location: location.origin + '/breakdown/me', page_path: '/breakdown/me' }
+        : {});
     </script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23141310'/><path d='M11 6 L21 26' stroke='%232547F4' stroke-width='3.4' stroke-linecap='round'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -12,6 +12,7 @@ import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
 import { Suspense, lazy } from "react";
+import { BreakdownBoundary } from "./components/breakdown/BreakdownBoundary";
 
 const BreakdownLanding = lazy(() => import("./pages/breakdown/BreakdownLanding"));
 const BreakdownToken = lazy(() => import("./pages/breakdown/BreakdownToken"));
@@ -35,9 +36,9 @@ const App = () => (
           <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
-          <Route path="/breakdown" element={<Suspense fallback={<Blank />}><BreakdownLanding /></Suspense>} />
-          <Route path="/breakdown/me" element={<Suspense fallback={<Blank />}><BreakdownMe /></Suspense>} />
-          <Route path="/breakdown/:token" element={<Suspense fallback={<Blank />}><BreakdownToken /></Suspense>} />
+          <Route path="/breakdown" element={<BreakdownBoundary><Suspense fallback={<Blank />}><BreakdownLanding /></Suspense></BreakdownBoundary>} />
+          <Route path="/breakdown/me" element={<BreakdownBoundary><Suspense fallback={<Blank />}><BreakdownMe /></Suspense></BreakdownBoundary>} />
+          <Route path="/breakdown/:token" element={<BreakdownBoundary><Suspense fallback={<Blank />}><BreakdownToken /></Suspense></BreakdownBoundary>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
