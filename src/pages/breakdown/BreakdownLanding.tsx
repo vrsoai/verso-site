@@ -10,7 +10,7 @@ const VIA_RE = /^[a-z0-9_-]{1,40}$/i;
 export default function BreakdownLanding() {
   usePageMeta({
     title: "Your ChatGPT, in numbers · Verso",
-    description: "Connect your ChatGPT and get your personal breakdown: how much you chat, when, about what, which sites ChatGPT cites to you, and how you compare.",
+    description: "Connect your ChatGPT and get your personal breakdown: how much you chat, when, about what, and which sites ChatGPT cites to you.",
   });
   const [params] = useSearchParams();
   const via = useMemo(() => {
@@ -27,7 +27,7 @@ export default function BreakdownLanding() {
           Your ChatGPT, <em>in numbers.</em>
         </h1>
         <p className="bd-lead">
-          How much you really use it, at what hours, about what, which sites it cites to you, and how that compares with everyone else. Built from your full history, in a few minutes.
+          How much you really use it, at what hours, about what, and which sites it cites to you. Built from your full history, in a few minutes.
         </p>
       </section>
 
@@ -40,7 +40,6 @@ export default function BreakdownLanding() {
           <li><span className="ico">→</span><span><b>Where answers come from.</b> How often ChatGPT searches the web for you, and the sites it cites or reads most.</span></li>
           <li><span className="ico">→</span><span><b>What you use it for.</b> Every conversation filed under a topic and an intent: work vs personal, asking vs doing.</span></li>
           <li><span className="ico">→</span><span><b>Your rhythm.</b> By month, hour and weekday; the models that answered; images, voice and thinking time.</span></li>
-          <li><span className="ico">→</span><span><b>You vs everyone.</b> Where you sit among the thousands of ChatGPT accounts in Verso's panel.</span></li>
         </ul>
       </section>
 

@@ -8,7 +8,6 @@ import {
   LongestSection,
   MediaSection,
   ModelsSection,
-  PanelSection,
   RhythmSection,
   SearchSection,
 } from "@/components/breakdown/Sections";
@@ -148,7 +147,6 @@ export default function BreakdownMe() {
           <ModelsSection b={b} />
           <MediaSection b={b} />
           <LongestSection b={b} />
-          <PanelSection b={b} />
         </>
       ) : null}
 
