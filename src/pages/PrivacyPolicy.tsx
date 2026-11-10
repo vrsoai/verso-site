@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
             <p>If Verso is involved in a merger, acquisition, financing, or sale of assets, your information may be transferred as part of that transaction.</p>
 
             <h3>E. Partner Applications and Data Customers</h3>
-            <p>If you connected an AI assistant account through a partner application, we share the conversation data of that account with that partner application. We may also make conversation data available to our data customers, in accordance with the consent you gave to the partner application and the terms presented to you there. The partner application is responsible for informing you of this use before you connect.</p>
+            <p>If you connected an AI assistant account through a partner application, we share the conversation data of that account with that partner application. We may also make conversation data available to our data customers, in accordance with the consent you gave to the partner application and the terms presented to you there. The partner application is responsible for informing you of this use before you connect. When you connect through a tool operated by Verso itself (such as the ChatGPT breakdown at tryverso.ai/breakdown), Verso informs you of this use on that page before you connect, and the same rules apply.</p>
 
             <h2>4. Chrome Extension Data Practices</h2>
             <p>Our Chrome extension collects only the data necessary to provide its functionality. It does not collect passwords, payment information, or sensitive form data unless explicitly disclosed.</p>
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
             <h2>5. Data Retention</h2>
             <p>We retain information as long as your account is active, as necessary to provide the Service, as required by law, and as needed to resolve disputes or enforce agreements.</p>
             <p>You may request deletion of your account by contacting us at <a href="mailto:contact@tryverso.ai">contact@tryverso.ai</a>.</p>
-            <p>Conversation data from a connected AI assistant account is kept until you delete it from the manage page offered by the partner application, until the partner application deletes it on your behalf, or until we terminate the connection. Deletion is immediate and irreversible: the conversations and attachments are erased and the encryption key protecting the session credential is destroyed.</p>
+            <p>Conversation data from a connected AI assistant account is kept until you delete it from the manage page offered by the partner application or from your breakdown page for a tool operated by Verso, until the partner application deletes it on your behalf, or until we terminate the connection. Deletion is immediate and irreversible: the conversations and attachments are erased and the encryption key protecting the session credential is destroyed.</p>
 
             <h2>6. Security</h2>
             <p>We implement reasonable administrative, technical, and organizational safeguards designed to protect your information. However, no system is 100% secure. We cannot guarantee absolute security.</p>

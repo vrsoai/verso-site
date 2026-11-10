@@ -1,14 +1,19 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /breakdown/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /breakdown/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /breakdown/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /breakdown/
 
 User-agent: *
 Allow: /
+Disallow: /breakdown/
