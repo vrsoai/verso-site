@@ -26,6 +26,7 @@ import { StatTile } from "./StatTile";
 
 const MIN_PANEL = 25;
 const TOP_DOMAINS = 10;
+const TOP_NAMES = 10;
 const TOP_MODELS = 8;
 
 function Section({ id, eyebrow, title, lead, children }: { id: string; eyebrow: string; title: string; lead?: string; children: React.ReactNode }) {
@@ -93,6 +94,54 @@ export function SearchSection({ b }: { b: Breakdown }) {
           <p className="bd-note">Pages ChatGPT opened while searching{sampled ? ` (from your ${formatInt(s.sampledConversations)} most recent conversations)` : ""}.</p>
         </div>
       </div>
+    </Section>
+  );
+}
+
+export function BrandsSection({ b, status }: { b: Breakdown; status: StatusView }) {
+  if (!status.labels.enabled) return null;
+  const br = b.brands ?? null;
+  const n = b.totals.conversations;
+  const assessed = br?.assessed ?? 0;
+  const title = "Brands and products ChatGPT recommended to you";
+  if (!br || assessed === 0) {
+    return (
+      <Section id="brands" eyebrow="Recommendations" title={title} lead="An AI model reads the answers of each conversation once and notes the brands, products, companies and organizations they put forward. This section fills in as the reading progresses.">
+        <div className="bd-card">
+          <p className="bd-muted">Reading your conversations…</p>
+        </div>
+      </Section>
+    );
+  }
+  const partial = assessed < n;
+  const top = br.topRecommended.slice(0, TOP_NAMES).map((d) => ({ label: d.name, value: d.conversations, display: formatInt(d.conversations) }));
+  const mentioned = br.topMentioned.slice(0, TOP_NAMES).map((d) => ({ label: d.name, value: d.conversations, display: formatInt(d.conversations) }));
+  return (
+    <Section
+      id="brands"
+      eyebrow="Recommendations"
+      title={title}
+      lead={`ChatGPT recommended at least one brand, product, company or organization in ${pct(br.recommendedShare)} of your conversations, and two or more in ${pct(ratio(br.recommendedSeveral, assessed))}.`}
+    >
+      <div className="bd-tiles" style={{ marginTop: 0 }}>
+        <StatTile value={formatInt(br.recommended)} label="conversations with a recommendation" hint={pct(br.recommendedShare) + (partial ? " of those read" : " of all")} />
+        <StatTile value={formatInt(br.recommendedSeveral)} label="with two or more recommended" hint={pct(ratio(br.recommendedSeveral, assessed)) + (partial ? " of those read" : " of all")} />
+        <StatTile value={formatInt(br.mentionedOnly)} label="named brands without recommending one" hint={pct(ratio(br.mentionedOnly, assessed)) + (partial ? " of those read" : " of all")} />
+        <StatTile value={formatInt(br.distinctRecommended)} label="different names recommended" />
+      </div>
+      <div className="bd-two" style={{ marginTop: 12 }}>
+        <div className="bd-card">
+          <h3>Recommended to you most</h3>
+          <RankedBars items={top} ariaLabel="Most recommended names" />
+          <p className="bd-note">Conversations in which ChatGPT put the name forward: suggested it, listed it among options, ranked it or endorsed your choice.</p>
+        </div>
+        <div className="bd-card">
+          <h3>Came up without a recommendation</h3>
+          <RankedBars items={mentioned} ariaLabel="Names mentioned without a recommendation" />
+          <p className="bd-note">Named in an answer in passing: your own tools or employer, background facts, examples.</p>
+        </div>
+      </div>
+      {partial ? <p className="bd-note">Based on the {formatInt(assessed)} conversations read so far, out of {formatInt(n)}.</p> : null}
     </Section>
   );
 }

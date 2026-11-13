@@ -66,7 +66,7 @@ export function StageBanner({ status, onConnect, connecting, error }: Props) {
         <div className="bd-banner-text">
           <h3>Categorizing your conversations…</h3>
           <p>
-            {formatInt(status.labels.labeled)} of {formatInt(status.labels.total)} done. Everything else below is final; the "what you use it for" section fills in as we go.{emailNote}
+            {formatInt(status.labels.labeled)} of {formatInt(status.labels.total)} done. Everything else below is final; the "recommendations" and "what you use it for" sections fill in as we go.{emailNote}
           </p>
         </div>
       </div>

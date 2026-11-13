@@ -37,7 +37,7 @@ export default function BreakdownLanding() {
         <h2 id="get-h">What you get</h2>
         <ul className="bd-list">
           <li><span className="ico">→</span><span><b>Your numbers.</b> Conversations, messages, words typed, days active, streaks, your typical prompt.</span></li>
-          <li><span className="ico">→</span><span><b>Where answers come from.</b> How often ChatGPT searches the web for you, and the sites it cites or reads most.</span></li>
+          <li><span className="ico">→</span><span><b>Where answers come from.</b> How often ChatGPT searches the web for you, the sites it cites or reads most, and the brands and products it recommends.</span></li>
           <li><span className="ico">→</span><span><b>What you use it for.</b> Every conversation filed under a topic and an intent: work vs personal, asking vs doing.</span></li>
           <li><span className="ico">→</span><span><b>Your rhythm.</b> By month, hour and weekday; the models that answered; images, voice and thinking time.</span></li>
         </ul>

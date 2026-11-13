@@ -105,6 +105,27 @@ export interface MediaStats {
   voiceConversations: number;
 }
 
+export interface NameCount {
+  name: string;
+  conversations: number;
+}
+
+/** Brands, products, companies and organizations named in ChatGPT's answers (labeler v2). */
+export interface BrandStats {
+  /** Conversations read by the current labeler (the others have no brands yet). */
+  assessed: number;
+  /** ... in which at least one name was put forward as an option for the reader. */
+  recommended: number;
+  /** ... in which two or more were. */
+  recommendedSeveral: number;
+  /** ... in which names came up without any being put forward. */
+  mentionedOnly: number;
+  recommendedShare: number | null;
+  distinctRecommended: number;
+  topRecommended: NameCount[];
+  topMentioned: NameCount[];
+}
+
 export interface LabelStats {
   labeled: number;
   coverage: number | null;
@@ -159,6 +180,8 @@ export interface Breakdown {
   };
   longestConversations: { title: string; userMessages: number; startedAt: string | null }[];
   labels: LabelStats;
+  /** Absent from breakdowns cached before version 2. */
+  brands?: BrandStats | null;
   you: Partial<Record<YouKey, number | null>>;
   panel: PanelStats | null;
 }
