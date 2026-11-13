@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BreakdownShell } from "@/components/breakdown/BreakdownShell";
 import { DataCard } from "@/components/breakdown/DataCard";
 import {
+  BrandsSection,
   HeroNumbers,
   LabelsSection,
   LongestSection,
@@ -142,6 +143,7 @@ export default function BreakdownMe() {
         <>
           <HeroNumbers b={b} />
           <SearchSection b={b} />
+          <BrandsSection b={b} status={s} />
           <LabelsSection b={b} status={s} />
           <RhythmSection b={b} />
           <ModelsSection b={b} />
