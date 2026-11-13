@@ -121,7 +121,7 @@ export function BrandsSection({ b, status }: { b: Breakdown; status: StatusView 
       id="brands"
       eyebrow="Recommendations"
       title={title}
-      lead={`ChatGPT recommended at least one brand, product, company or organization in ${pct(br.recommendedShare)} of your conversations, and two or more in ${pct(ratio(br.recommendedSeveral, assessed))}.`}
+      lead={`ChatGPT recommended at least one brand, product, company or organization in ${pct(br.recommendedShare)} of ${partial ? "the conversations read so far" : "your conversations"}, and two or more in ${pct(ratio(br.recommendedSeveral, assessed))}.`}
     >
       <div className="bd-tiles" style={{ marginTop: 0 }}>
         <StatTile value={formatInt(br.recommended)} label="conversations with a recommendation" hint={pct(br.recommendedShare) + (partial ? " of those read" : " of all")} />

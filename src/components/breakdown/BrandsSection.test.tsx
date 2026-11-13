@@ -35,11 +35,34 @@ describe("BrandsSection", () => {
         })}
       />,
     );
-    expect(screen.getByText(/at least one brand, product, company or organization in 50% of your conversations, and two or more in 25%/)).toBeInTheDocument();
+    // 8 of 10 read so far: the shares are of those read
+    expect(screen.getByText(/at least one brand, product, company or organization in 50% of the conversations read so far, and two or more in 25%/)).toBeInTheDocument();
     expect(screen.getByText("conversations with a recommendation")).toBeInTheDocument();
     expect(screen.getByText("Grand Hotel Tremezzo")).toBeInTheDocument();
     expect(screen.getByText("Crédit Agricole")).toBeInTheDocument();
-    // 8 of 10 read so far
     expect(screen.getByText(/Based on the 8 conversations read so far, out of 10/)).toBeInTheDocument();
+  });
+
+  it("speaks of all the conversations once every one is read", () => {
+    render(
+      <BrandsSection
+        status={status(true)}
+        b={breakdown(
+          {
+            assessed: 10,
+            recommended: 3,
+            recommendedSeveral: 1,
+            mentionedOnly: 2,
+            recommendedShare: 0.3,
+            distinctRecommended: 4,
+            topRecommended: [{ name: "Notion", conversations: 2 }],
+            topMentioned: [],
+          },
+          10,
+        )}
+      />,
+    );
+    expect(screen.getByText(/in 30% of your conversations, and two or more in 10%/)).toBeInTheDocument();
+    expect(screen.queryByText(/read so far/)).not.toBeInTheDocument();
   });
 });
