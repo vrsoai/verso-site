@@ -29,6 +29,7 @@ const PrivacyPolicy = () => {
 
             <h3>D. Connected AI Assistant Accounts</h3>
             <p>When you connect an AI assistant account (for example, a ChatGPT account) to a partner application through our hosted connect page, we collect: the session credential needed to read that account, which we store encrypted and use only to retrieve your conversations; the conversation history of that account, including titles, messages, timestamps, attachments, and related metadata; identifiers of that account (an account identifier and a hashed email address) used to recognize the same account across connections; and the identifier the partner application uses to refer to you. We collect this data only after you start the connection from the partner application, and we keep it in sync until the connection is deleted.</p>
+            <p>Before the login, we may ask you a short set of questions that describe Verso's research panel: year of birth, gender, household income bracket, highest level of education, employment status and occupation group, with an optional job title. We also derive an approximate location (country, region, city, postal code, time zone, network) from the IP address of that request, and record the device's time zone and language and the time taken to answer. These answers are kept with your Verso profile, are asked once, and are deleted with your other data. The panel is open to adults only; we do not connect an account when the answers indicate the person is under 18.</p>
 
             <h2>2. How We Use Information</h2>
             <p>We use collected information to:</p>
@@ -62,7 +63,7 @@ const PrivacyPolicy = () => {
             <p>If Verso is involved in a merger, acquisition, financing, or sale of assets, your information may be transferred as part of that transaction.</p>
 
             <h3>E. Partner Applications and Data Customers</h3>
-            <p>If you connected an AI assistant account through a partner application, we share the conversation data of that account with that partner application. We may also make conversation data available to our data customers, in accordance with the consent you gave to the partner application and the terms presented to you there. The partner application is responsible for informing you of this use before you connect. When you connect through a tool operated by Verso itself (such as the ChatGPT breakdown at tryverso.ai/breakdown), Verso informs you of this use on that page before you connect, and the same rules apply.</p>
+            <p>If you connected an AI assistant account through a partner application, we share the conversation data of that account and your answers to the panel questions with that partner application. We may also make conversation data available to our data customers, in accordance with the consent you gave to the partner application and the terms presented to you there. The partner application is responsible for informing you of this use before you connect. When you connect through a tool operated by Verso itself (such as the ChatGPT breakdown at tryverso.ai/breakdown), Verso informs you of this use on that page before you connect, and the same rules apply.</p>
 
             <h2>4. Chrome Extension Data Practices</h2>
             <p>Our Chrome extension collects only the data necessary to provide its functionality. It does not collect passwords, payment information, or sensitive form data unless explicitly disclosed.</p>
@@ -87,7 +88,7 @@ const PrivacyPolicy = () => {
             <p>If you access the Service outside the United States, your information may be transferred to and processed in the United States or other jurisdictions. By using the Service, you consent to such transfers in accordance with applicable law.</p>
 
             <h2>10. Children's Privacy</h2>
-            <p>The Service is not intended for children under 13 (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children. If we become aware of such data collection, we will take steps to delete it.</p>
+            <p>The Service is not intended for children under 13 (or the minimum age required in your jurisdiction), and Verso's research panel is open to adults (18 and older) only. We do not knowingly collect personal information from children. If we become aware of such data collection, we will take steps to delete it.</p>
 
             <h2>11. Cookies and Tracking Technologies</h2>
             <p>We use cookies, local storage, analytics tools, and similar tracking technologies. You may control cookies through your browser settings. Disabling cookies may affect functionality.</p>
