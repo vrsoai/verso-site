@@ -73,7 +73,7 @@ export default function BreakdownLanding() {
           </div>
         </div>
         <p className="bd-note" style={{ marginTop: 18 }}>
-          Questions: <a href="mailto:hello@tryverso.ai">hello@tryverso.ai</a>. See the <Link to="/privacy">Privacy Policy</Link> and <Link to="/terms">Terms</Link>.
+          Questions: <a href="mailto:contact@tryverso.ai">contact@tryverso.ai</a>. See the <Link to="/privacy">Privacy Policy</Link> and <Link to="/terms">Terms</Link>.
         </p>
       </section>
     </BreakdownShell>

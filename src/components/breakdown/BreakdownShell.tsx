@@ -18,7 +18,7 @@ export function BreakdownShell({ children, aside }: { children: ReactNode; aside
         <nav>
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
-          <a href="mailto:hello@tryverso.ai">Contact</a>
+          <a href="mailto:contact@tryverso.ai">Contact</a>
         </nav>
       </div>
     </div>
