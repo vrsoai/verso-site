@@ -186,6 +186,25 @@ footer { background: var(--dark); border-top: 1px solid var(--dark-line); color:
 .foot a:hover { color: #fff; }
 .foot .fine { font-family: var(--mono); font-size: 11.5px; }
 
+/* ===== HOME (single screen) ===== */
+.stealth { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 40px 24px 20px; }
+.stealth .wordmark { font-size: 28px; }
+.stealth-main { display: flex; flex-direction: column; align-items: center; gap: 44px; padding: 48px 0; text-align: center; }
+.stealth h1 { font-size: clamp(30px, 10vw, 76px); line-height: 1.06; }
+.stealth h1 em { display: block; }
+.stealth-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 20px; font-size: 14px; color: var(--soft); }
+.stealth-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; text-decoration: none; }
+.stealth-links a:hover { color: var(--ink); }
+/* Desktop: wordmark top left and booking button top right, where the header of the other pages puts them */
+@media (min-width: 961px) {
+  .stealth { display: grid; grid-template-columns: 1fr auto; grid-template-rows: 72px 1fr auto; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 32px 20px; }
+  .stealth .wordmark { grid-area: 1 / 1; justify-self: start; font-size: 25px; }
+  .stealth-main { display: contents; }
+  .stealth h1 { grid-area: 2 / 1 / 3 / -1; text-align: center; }
+  .stealth .btn { grid-area: 1 / 2; padding: 10px 20px; font-size: 14px; }
+  .stealth-links { grid-area: 3 / 1 / 4 / -1; }
+}
+
 /* ===== LEGAL PAGES ===== */
 .legal-page { padding: 80px 0 60px; }
 .legal-page h1 { font-size: clamp(32px, 3.6vw, 48px); margin-bottom: 32px; }
@@ -333,6 +352,10 @@ footer { background: var(--dark); border-top: 1px solid var(--dark-line); color:
   h2 { font-size: clamp(24px, 6vw, 34px); }
   .eyebrow { font-size: 11px; margin-bottom: 14px; }
   .lead { font-size: 16px; }
+
+  /* Home */
+  .stealth { padding-left: 16px; padding-right: 16px; }
+  .stealth-links { gap: 0 4px; }
 
   /* Footer */
   .foot nav { gap: 12px; }

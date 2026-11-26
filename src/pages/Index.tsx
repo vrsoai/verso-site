@@ -1,24 +1,23 @@
-import { Nav } from "@/components/landing/Nav";
-import { Hero } from "@/components/landing/Hero";
-import { DataShowcase } from "@/components/landing/DataShowcase";
-import { UseCases } from "@/components/landing/UseCases";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Trust } from "@/components/landing/Trust";
-import { CtaSection } from "@/components/landing/CtaSection";
-import { Footer } from "@/components/landing/Footer";
+import { Link } from "react-router-dom";
+import { Wordmark } from "@/components/landing/Wordmark";
+import { BookDemoButton } from "@/components/landing/BookDemoButton";
 
 const Index = () => {
   return (
-    <>
-      <Nav />
-      <Hero />
-      <DataShowcase />
-      <UseCases />
-      <HowItWorks />
-      <Trust />
-      <CtaSection />
-      <Footer />
-    </>
+    <main className="stealth">
+      <Wordmark />
+      <div className="stealth-main">
+        <h1>
+          The questions are <em>the interesting part.</em>
+        </h1>
+        <BookDemoButton source="hero" className="btn btn-dark" />
+      </div>
+      <nav className="stealth-links" aria-label="Contact and legal">
+        <a href="mailto:contact@tryverso.ai">contact@tryverso.ai</a>
+        <Link to="/privacy">Privacy</Link>
+        <Link to="/terms">Terms</Link>
+      </nav>
+    </main>
   );
 };
 

@@ -10,9 +10,6 @@ export const Nav = () => {
       <div className="container nav">
         <Wordmark />
         <nav className={`nav-links${open ? " open" : ""}`}>
-          <a href="#use-cases" onClick={() => setOpen(false)}>Use cases</a>
-          <a href="#how-it-works" onClick={() => setOpen(false)}>How it works</a>
-          <a href="#trust" onClick={() => setOpen(false)}>Trust</a>
           <a href="https://docs.tryverso.ai" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Docs</a>
           <BookDemoButton
             source="nav-mobile"
